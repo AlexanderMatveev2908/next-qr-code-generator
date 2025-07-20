@@ -1,10 +1,10 @@
 import { easeInOut } from "framer-motion";
 
 export const varToast = {
-  hidden: () => ({
+  hidden: {
     opacity: 0,
     x: "100%",
-  }),
+  },
   open: {
     transition: {
       duration: 0.6,

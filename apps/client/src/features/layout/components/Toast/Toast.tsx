@@ -44,13 +44,12 @@ const Toast: FC = () => {
           `}
           initial={"hidden"}
           variants={varToast}
-          custom={toastState.isShow}
           animate="open"
           exit="close"
         >
           <div className="w-full flex justify-between items-center pt-2">
             <span
-              className="txt__2xl"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl"
               css={css`
                 color: ${clr};
               `}
@@ -72,7 +71,7 @@ const Toast: FC = () => {
           </div>
 
           <div className="w-full flex justify-center">
-            <span className="txt__lg text-neutral-200">
+            <span className="text-base sm:text-lg md:text-lg lg:text-xl text-neutral-200">
               {toastState.toast.msg.slice(0, 200)}
             </span>
           </div>
