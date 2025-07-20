@@ -1,8 +1,6 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
-import SpinBtn from "@/common/components/spinners/SpinBtn/SpinBtn";
-import SpinPage from "@/common/components/spinners/SpinPage/SpinPage";
 import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
 import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
 import { testSliceAPI } from "@/features/test/slices/api";
