@@ -4,14 +4,11 @@
 import { AppEventT } from "@/common/types/api";
 import { toastSlice } from "@/features/layout/components/Toast/slices";
 import { testSliceAPI } from "@/features/test/slices/api";
-import { __cg } from "@shared/first/lib/logger.js";
 import type { FC } from "react";
 import { useDispatch } from "react-redux";
 
 const Home: FC = () => {
-  const result = testSliceAPI.useGetHelloQuery();
-
-  __cg("res", result);
+  testSliceAPI.useGetHelloQuery();
 
   const dispatch = useDispatch();
 
