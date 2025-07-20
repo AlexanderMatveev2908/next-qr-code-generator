@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
+import SpinBtn from "@/common/components/spinners/SpinBtn/SpinBtn";
 import SpinPage from "@/common/components/spinners/SpinPage/SpinPage";
 import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
 import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
@@ -40,7 +41,7 @@ const Home: FC = () => {
         Click me
       </button> */}
 
-      <SpinPage />
+      <SpinBtn />
     </div>
   );
 };
