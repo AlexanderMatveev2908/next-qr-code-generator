@@ -10,6 +10,12 @@ export enum TagsAPI {
   TEST = "TEST",
 }
 
+export enum AppEventT {
+  SUCCESS = "SUCCESS",
+  ERROR = "ERROR",
+  INFO = "INFO",
+}
+
 export type ResApiT<T> = {
   data: {
     msg?: string;
