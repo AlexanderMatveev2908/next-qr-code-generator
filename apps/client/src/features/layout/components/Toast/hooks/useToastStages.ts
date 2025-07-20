@@ -3,6 +3,7 @@ import { toastSlice } from "../slices";
 import { useCallback, useEffect, useRef } from "react";
 import { DispatchT } from "@/core/store";
 import { ToastStateT } from "../types";
+import { useWrapListener } from "@/core/hooks/ui/useWrapListener";
 
 export const useToastStages = ({
   dispatch,
@@ -15,6 +16,8 @@ export const useToastStages = ({
   const prevStatus = useRef<boolean>(false);
   const prevID = useRef<string>("");
   const forcingRef = useRef<boolean>(false);
+
+  const { wrapListener } = useWrapListener();
 
   const clickClose = useCallback(() => {
     dispatch(toastSlice.actions.close());
@@ -52,13 +55,13 @@ export const useToastStages = ({
       }, 4000);
     };
 
-    listen();
+    wrapListener(listen);
 
     // ? cleanup
     return () => {
       clearTmr(timerRef);
     };
-  }, [toastState.isShow, clickClose, toastState.id]);
+  }, [wrapListener, toastState.isShow, clickClose, toastState.id]);
 
   useEffect(() => {
     const listen = () => {
@@ -80,8 +83,14 @@ export const useToastStages = ({
       dispatch(toastSlice.actions.close());
     };
 
-    listen();
-  }, [toastState.isShow, toastState.toast, toastState.id, dispatch]);
+    wrapListener(listen);
+  }, [
+    wrapListener,
+    toastState.isShow,
+    toastState.toast,
+    toastState.id,
+    dispatch,
+  ]);
 
   useEffect(() => {
     const listen = () => {
@@ -113,12 +122,12 @@ export const useToastStages = ({
       }, 400);
     };
 
-    listen();
+    wrapListener(listen);
 
     return () => {
       clearTmr(timerRef);
     };
-  }, [toastState.isShow, dispatch, toastState.id]);
+  }, [wrapListener, toastState.isShow, dispatch, toastState.id]);
 
   return {
     clickClose,

@@ -1,8 +1,11 @@
-import { UnwrappedResApiT } from "@/common/types/api";
+import { AppEventT, UnwrappedResApiT } from "@/common/types/api";
 import { __cg } from "@shared/first/lib/logger.js";
 import { isStr } from "@shared/first/lib/validators.js";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { useErrAPI } from "./useErrAPI";
+import { toastSlice } from "@/features/layout/components/Toast/slices";
+import { useWrapListener } from "../ui/useWrapListener";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Params<T extends Record<string, any> | void> = {
@@ -26,10 +29,10 @@ export const useWrapQuery = <T extends Record<string, any> | void>({
   data,
 }: Params<T>) => {
   const dispatch = useDispatch();
-  const { handleErr } = useHandleErrAPI();
+  const { handleErr } = useErrAPI();
   const hasRun = useRef(false);
 
-  const { isHydrated } = useListenHydration();
+  const { wrapListener } = useWrapListener();
 
   const handleQuery = useCallback(() => {
     if (hasRun.current) return;
@@ -39,11 +42,14 @@ export const useWrapQuery = <T extends Record<string, any> | void>({
     if (isSuccess) {
       __cg("wrapper query", data);
 
-      if (showToast && !(data?.blob instanceof Blob)) {
+      if (
+        showToast &&
+        !((data as UnwrappedResApiT<{ blob: Blob }>)?.blob instanceof Blob)
+      ) {
         dispatch(
           toastSlice.actions.open({
-            msg: isStr(data?.msg) ? data!.msg : "Things went good ✅",
-            type: ApiEventType.SUCCESS,
+            msg: isStr(data?.msg) ? data!.msg! : "Things went good ✅",
+            type: AppEventT.OK,
           })
         );
       }
@@ -63,9 +69,8 @@ export const useWrapQuery = <T extends Record<string, any> | void>({
   ]);
 
   useEffect(() => {
-    if (!isHydrated) return;
-    handleQuery();
-  }, [handleQuery, isHydrated]);
+    wrapListener(handleQuery);
+  }, [handleQuery, wrapListener]);
 
   const triggerRef = useCallback(() => (hasRun.current = false), []);
 

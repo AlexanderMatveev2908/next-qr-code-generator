@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ErrApiT } from "@/common/types/api";
+import { AppEventT, ErrApiT } from "@/common/types/api";
+import { toastSlice } from "@/features/layout/components/Toast/slices";
 import { __cg } from "@shared/first/lib/logger";
+import { isStr } from "@shared/first/lib/validators.js";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-export const useHandleErrAPI = () => {
+export const useErrAPI = () => {
   const dispatch = useDispatch();
 
   const handleErr = useCallback(
@@ -24,8 +26,8 @@ export const useHandleErrAPI = () => {
       if (!hideErr)
         dispatch(
           toastSlice.actions.open({
-            msg: isStr(data?.msg) ? data.msg : "Ops something went wrong ❌",
-            type: ApiEventType.ERROR,
+            msg: isStr(data?.msg) ? data.msg! : "Ops something went wrong ❌",
+            type: AppEventT.ERR,
           })
         );
 

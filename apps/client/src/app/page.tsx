@@ -2,14 +2,19 @@
 "use client";
 
 import { AppEventT } from "@/common/types/api";
+import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
 import { toastSlice } from "@/features/layout/components/Toast/slices";
 import { testSliceAPI } from "@/features/test/slices/api";
 import type { FC } from "react";
 import { useDispatch } from "react-redux";
 
 const Home: FC = () => {
-  testSliceAPI.useGetHelloQuery();
+  const res = testSliceAPI.useGetHelloQuery();
 
+  useWrapQuery({
+    ...res,
+    showToast: true,
+  });
   const dispatch = useDispatch();
 
   return (
