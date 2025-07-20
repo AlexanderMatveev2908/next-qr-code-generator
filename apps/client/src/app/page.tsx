@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
+import SpinPage from "@/common/components/spinners/SpinPage/SpinPage";
 import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
 import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
 import { testSliceAPI } from "@/features/test/slices/api";
@@ -28,7 +29,7 @@ const Home: FC = () => {
 
   return (
     <div className="w-full h-full min-h-screen flex justify-center items-center gap-20">
-      <span className="text-3xl font-bold text-neutral-200">
+      {/* <span className="text-3xl font-bold text-neutral-200">
         Script worked ✌🏽
       </span>
 
@@ -37,7 +38,9 @@ const Home: FC = () => {
         className="py-2 px-6 rounded-xl w-[300px] border-2 border-white text-xl text-white"
       >
         Click me
-      </button>
+      </button> */}
+
+      <SpinPage />
     </div>
   );
 };
