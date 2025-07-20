@@ -3,6 +3,10 @@
   @apply border-[3px] border-[whitesmoke];
 }
 
+.tc {
+  @apply text-[whitesmoke] text-xl;
+}
+
 .link {
   transition: 0.3s ease-in-out;
   position: relative;
@@ -45,6 +49,14 @@
 .el__app:active {
   transition: 0.15s;
   transform: scale(0.8);
+}
+
+.z__black_bg__popup {
+  z-index: 500;
+}
+
+.z__popup {
+  z-index: 1000;
 }
 
 .z__toast {

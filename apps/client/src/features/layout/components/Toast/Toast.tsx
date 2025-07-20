@@ -11,6 +11,8 @@ import { X } from "lucide-react";
 import { useToastStages } from "./hooks/useToastStages";
 import { useDispatch, useSelector } from "react-redux";
 import { FC } from "react";
+import IconBtn from "@/common/components/buttons/IconBtn";
+import { AppEventT } from "@/common/types/api";
 
 const Toast: FC = () => {
   const toastState = useSelector(getToastState);
@@ -57,17 +59,13 @@ const Toast: FC = () => {
               {toastState.toast.type?.toUpperCase()}
             </span>
 
-            <button
-              onClick={clickClose}
-              className="btn__app text-red-600"
-              style={
-                {
-                  "--scale__up": 1.3,
-                } as React.CSSProperties
-              }
-            >
-              <X className="w-[40px] h-[40px]" />
-            </button>
+            <IconBtn
+              {...{
+                handleClick: clickClose,
+                act: AppEventT.ERR,
+                Svg: X,
+              }}
+            />
           </div>
 
           <div className="w-full flex justify-center">
