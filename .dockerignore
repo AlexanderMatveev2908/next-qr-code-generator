@@ -1,4 +1,5 @@
 # === Yarn Berry ===
+
 # Ignore everything in .yarn except what's needed
 .yarn/*
 !.yarn/patches/
@@ -38,6 +39,7 @@ apps/*/.next/
 apps/*/out/
 
 # === Certs / Secrets / etc ===
+certs/
 *.pem
 *.key
 *.crt
