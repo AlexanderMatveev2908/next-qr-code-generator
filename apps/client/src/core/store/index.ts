@@ -1,10 +1,10 @@
 import { testSlice } from "@/features/test/slices/slice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { apiAppSlice } from "./api";
+import { apiSlice } from "./api";
 
 const rootReducer = combineReducers({
   test: testSlice.reducer,
-  apiApp: apiAppSlice.reducer,
+  apiApp: apiSlice.reducer,
 });
 
 export const genStoreSSR = (
@@ -13,7 +13,7 @@ export const genStoreSSR = (
   configureStore({
     reducer: rootReducer,
 
-    middleware: (getDefMdw) => getDefMdw().concat(apiAppSlice.middleware),
+    middleware: (getDefMdw) => getDefMdw().concat(apiSlice.middleware),
     preloadedState,
   });
 

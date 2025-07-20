@@ -1,26 +1,24 @@
-import { ResponseType } from "axios";
+import { AxiosRequestConfig } from "axios";
 import { instanceAxs } from "./axiosInstance";
-import { ErrApiT, ResApiT } from "@/common/types/api";
 import { __cg } from "@shared/first/lib/logger.js";
+import { BaseQueryFn } from "@reduxjs/toolkit/query";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-type ArgType<T> = {
+type ArgType = {
   url: string;
-  method: string;
-  data?: T;
-  params?: string;
-  responseType?: ResponseType;
+  method: AxiosRequestConfig["method"];
+  data?: AxiosRequestConfig["data"];
+  params?: AxiosRequestConfig["params"];
+  responseType?: AxiosRequestConfig["responseType"];
 };
 
-type ErrResT<K> = { error: ErrApiT<K> & { config: Record<string, any> } };
-
-export const baseQueryAxs = async <T, K>({
+export const baseQueryAxs: BaseQueryFn<ArgType, unknown, unknown> = async ({
   url,
   method,
   data,
   params,
   responseType,
-}: ArgType<T>): Promise<ResApiT<K> | ErrResT<K>> => {
+}) => {
   try {
     const { data: resData, status } = await instanceAxs({
       url,
@@ -30,21 +28,19 @@ export const baseQueryAxs = async <T, K>({
       responseType,
     });
 
-    return (
-      responseType === "blob" && resData instanceof Blob
-        ? {
-            data: {
-              blob: resData,
-              status,
-            },
-          }
-        : {
-            data: {
-              ...resData,
-              status,
-            },
-          }
-    ) as ResApiT<K>;
+    return responseType === "blob" && resData instanceof Blob
+      ? {
+          data: {
+            blob: resData,
+            status,
+          },
+        }
+      : {
+          data: {
+            ...resData,
+            status,
+          },
+        };
   } catch (err: any) {
     const { response } = err ?? {};
     let errData: any = response?.data ?? {};
@@ -76,7 +72,7 @@ export const baseQueryAxs = async <T, K>({
           status: response?.status ?? 500,
         },
       },
-    } as ErrResT<K>;
+    };
   }
 };
 
