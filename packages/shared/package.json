@@ -2,6 +2,7 @@
   "name": "@shared/first",
   "version": "1.0.0",
   "license": "UNLICENSED",
+  "type": "module",
   "scripts": {
     "build": "tsc --build",
     "check": "tsc --noEmit",
