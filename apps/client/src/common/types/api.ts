@@ -11,9 +11,11 @@ export enum TagsAPI {
 }
 
 export enum AppEventT {
-  SUCCESS = "SUCCESS",
-  ERROR = "ERROR",
+  OK = "OK",
   INFO = "INFO",
+  WARN = "WARN",
+  ERR = "ERR",
+  NONE = "NONE",
 }
 
 export type ResApiT<T> = {
