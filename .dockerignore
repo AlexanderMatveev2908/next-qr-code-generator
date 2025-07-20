@@ -8,22 +8,13 @@
 !.yarn/versions/
 !.yarnrc.yml
 
-# node_modules — needed for zero-install to work inside container
 node_modules/
 
-# TypeScript build cache
 *.tsbuildinfo
 
-# PnP files (ignored unless you use zero-install with PnP mode)
-.pnp.*
-.pnp
-
-# === TurboRepo ===
-# Ignore Turbo local cache, but NOT dist outputs needed by apps
 turbo/
 .turbo/
 
-# Instead ignore only unnecessary dist folders if you copy built ones
 dist/
 
 # === Logs ===
