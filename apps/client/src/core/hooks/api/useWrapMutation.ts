@@ -6,17 +6,21 @@ import {
   MutationActionCreatorResult,
   MutationDefinition,
 } from "@reduxjs/toolkit/query";
+import { useErrAPI } from "./useErrAPI";
+import { toastSlice } from "@/features/layout/components/Toast/slices";
+import { isStr } from "@shared/first/lib/validators.js";
+import { AppEventT, ErrApiT } from "@/common/types/api";
 
 export const useWrapMutation = () => {
   const dispatch = useDispatch();
 
-  const { handleErr } = useHandleErrAPI();
+  const { handleErr } = useErrAPI();
 
   const wrapMutation = useCallback(
     async <T extends MutationDefinition<any, any, any, any>>({
       cbAPI,
       showToast = true,
-      hideErr = false,
+      hideErr,
     }: {
       cbAPI: () => MutationActionCreatorResult<T>;
       showToast?: boolean;
@@ -30,14 +34,14 @@ export const useWrapMutation = () => {
         if (showToast)
           dispatch(
             toastSlice.actions.open({
-              msg: isStr(data?.msg) ? data.msg : "Things went good ✅",
-              type: ApiEventType.SUCCESS,
+              msg: isStr(data?.msg) ? data.msg! : "Things went good ✅",
+              type: AppEventT.OK,
             })
           );
 
         return data;
       } catch (err) {
-        handleErr({ err: err as ErrAPI<T>, hideErr });
+        handleErr({ err: err as ErrApiT<T>, hideErr });
       }
     },
     [handleErr, dispatch]
