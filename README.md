@@ -1,0 +1,1 @@
+# next-qr-code-generator
