@@ -40,8 +40,6 @@ const Home: FC = () => {
       >
         Click me
       </button> */}
-
-      <SpinBtn />
     </div>
   );
 };

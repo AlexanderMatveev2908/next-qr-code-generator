@@ -7,9 +7,17 @@ import { v4 } from "uuid";
 import { easeInOut, motion } from "framer-motion";
 import { css } from "@emotion/react";
 import { resp } from "@/core/lib/style";
+import { AppEventT } from "@/common/types/api";
+import { $appClr } from "@/core/uiFactory/style";
 
-const SpinBtn: FC = ({}) => {
+type PropsType = {
+  act?: AppEventT;
+};
+
+const SpinBtn: FC<PropsType> = ({ act = AppEventT.NONE }) => {
   const ids = useMemo(() => Array.from({ length: 4 }, () => v4()), []);
+
+  const $clr = $appClr[act as keyof typeof $appClr];
 
   return (
     <div className="flex gap-5 items-center">
@@ -29,10 +37,9 @@ const SpinBtn: FC = ({}) => {
               height: 35px;
             }
 
-            background: var(--white__0);
-            box-shadow: 0 0 5px var(--white__0), 0 0 10px var(--white__0),
-              0 0 15px var(--white__0), 0 0 20px var(--white__0),
-              0 0 25px var(--white__0);
+            background: ${$clr};
+            box-shadow: 0 0 5px ${$clr}, 0 0 10px ${$clr}, 0 0 15px ${$clr},
+              0 0 20px ${$clr}, 0 0 25px ${$clr};
             border-radius: 50%;
           `}
           transition={{
