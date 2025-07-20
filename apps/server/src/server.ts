@@ -3,6 +3,7 @@ import fastify from "fastify";
 import env from "./conf/env.js";
 import { router } from "./routes/index.js";
 import { catchErr } from "./middleware/catchErr.js";
+import { decoratorsPlugin } from "./decorators/index.js";
 
 const app = fastify({
   logger: {
@@ -26,6 +27,7 @@ process.on("SIGINT", () => {
 
 const start = async () => {
   try {
+    await app.register(decoratorsPlugin);
     await app.register(catchErr);
     await app.register(env);
     await app.register(router, {
