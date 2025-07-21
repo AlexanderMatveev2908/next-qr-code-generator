@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { varPop } from "./uiFactory";
 import IconBtn from "../../buttons/IconBtn";
 import { X } from "lucide-react";
-import { AppEventT } from "@/common/types/api";
 
 type PropsType = {
   isPop: boolean | null;
@@ -55,7 +54,7 @@ const WrapPop: FC<PropsType> = ({
               handleClick: () => setIsPop(false),
               isEnabled: allowClose,
               Svg: X,
-              act: AppEventT.ERR,
+              act: "ERR",
             }}
           />
         </div>

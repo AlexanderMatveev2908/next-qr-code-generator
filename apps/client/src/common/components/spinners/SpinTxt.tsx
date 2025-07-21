@@ -11,7 +11,7 @@ type PropsType = {
   act?: AppEventT;
 };
 
-const SpinTxt: FC<PropsType> = ({ act = AppEventT.NONE }) => {
+const SpinTxt: FC<PropsType> = ({ act = "NONE" }) => {
   const $clr = $appClr[act];
 
   return (

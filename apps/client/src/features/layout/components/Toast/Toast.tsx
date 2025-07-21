@@ -12,7 +12,6 @@ import { useToastStages } from "./hooks/useToastStages";
 import { useDispatch, useSelector } from "react-redux";
 import { FC } from "react";
 import IconBtn from "@/common/components/buttons/IconBtn";
-import { AppEventT } from "@/common/types/api";
 
 const Toast: FC = () => {
   const toastState = useSelector(getToastState);
@@ -51,7 +50,7 @@ const Toast: FC = () => {
         >
           <div className="w-full flex justify-between items-center pt-2">
             <span
-              className="text-lg sm:text-xl md:text-2xl lg:text-3xl"
+              className="txt__lg"
               css={css`
                 color: ${clr};
               `}
@@ -62,14 +61,14 @@ const Toast: FC = () => {
             <IconBtn
               {...{
                 handleClick: clickClose,
-                act: AppEventT.ERR,
+                act: "ERR",
                 Svg: X,
               }}
             />
           </div>
 
           <div className="w-full flex justify-center">
-            <span className="text-base sm:text-lg md:text-lg lg:text-xl text-neutral-200">
+            <span className="txt__md text-neutral-200">
               {toastState.toast.msg.slice(0, 200)}
             </span>
           </div>

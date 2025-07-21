@@ -101,7 +101,7 @@ const WrapWakeUp: FC<PropsType> = ({ children }) => {
         }}
       >
         <div className="w-full h-[75%] flex flex-col items-center justify-center gap-20">
-          <span className="font-bold text-xl sm:text-2xl lg:text-3xl text-neutral-200">
+          <span className="txt__lg text-neutral-200">
             Server waking up ... 💤
           </span>
 
