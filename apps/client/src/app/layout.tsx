@@ -4,7 +4,7 @@ import { Fira_Code } from "next/font/google";
 import { genStoreSSR } from "@/core/store";
 import Providers from "@/features/layout/shells/Providers";
 import Toast from "@/features/layout/components/Toast/Toast";
-import WrapWake from "@/features/layout/shells/WrapWake";
+import WrapWakeUp from "@/features/layout/shells/WrapWakeUp/WrapWakeUp";
 
 const fira_code = Fira_Code({
   subsets: ["latin"],
@@ -37,11 +37,11 @@ export default function RootLayout({
             preloadedState: store.getState(),
           }}
         >
-          <WrapWake>
+          <WrapWakeUp>
             <Toast />
 
             {children}
-          </WrapWake>
+          </WrapWakeUp>
         </Providers>
       </body>
     </html>

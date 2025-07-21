@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
-import WrapPop from "@/common/components/HOC/WrapPop/WrapPop";
 import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
 import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
 import { testSliceAPI } from "@/features/test/slices/api";
 import { __cg } from "@shared/first/lib/logger.js";
-import { useEffect, useState, type FC } from "react";
+import { type FC } from "react";
 
 const Home: FC = () => {
   const res = testSliceAPI.useGetHelloQuery();
@@ -27,16 +26,9 @@ const Home: FC = () => {
     __cg("home res", res);
   };
 
-  const [isPop, setIsPop] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsPop(true);
-    }, 500);
-  }, []);
   return (
-    <div className="w-full h-full min-h-screen flex justify-center items-center gap-20">
-      {/* <span className="text-3xl font-bold text-neutral-200">
+    <div className="w-full h-full min-h-screen flex flex-col justify-center items-center gap-20">
+      <span className="text-3xl font-bold text-neutral-200">
         Script worked ✌🏽
       </span>
 
@@ -45,22 +37,7 @@ const Home: FC = () => {
         className="py-2 px-6 rounded-xl w-[300px] border-2 border-white text-xl text-white"
       >
         Click me
-      </button> */}
-
-      <WrapPop
-        {...{
-          isPop,
-          setIsPop,
-          Content: (
-            <p className="tc">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi
-              vero voluptatibus sequi dignissimos atque maxime esse
-              necessitatibus hic molestias? Maxime saepe enim nam eligendi quas
-              consectetur iure magnam, ut voluptas.
-            </p>
-          ),
-        }}
-      />
+      </button>
     </div>
   );
 };

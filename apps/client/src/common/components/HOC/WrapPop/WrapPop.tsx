@@ -16,14 +16,14 @@ type PropsType = {
     | ((val: boolean | null) => void)
     | React.Dispatch<React.SetStateAction<boolean | null>>;
 
-  Content: React.ReactNode | (() => React.ReactNode);
+  children: React.ReactNode | (() => React.ReactNode);
   allowClose?: boolean;
 };
 
 const WrapPop: FC<PropsType> = ({
   isPop,
   setIsPop,
-  Content,
+  children,
   allowClose = true,
 }) => {
   const popRef = useRef<HTMLDivElement | null>(null);
@@ -61,7 +61,7 @@ const WrapPop: FC<PropsType> = ({
         </div>
 
         <div className="h-full w-full pt-6">
-          {typeof Content === "function" ? Content() : Content}
+          {typeof children === "function" ? children() : children}
         </div>
       </motion.div>
     </>

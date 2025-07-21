@@ -6,8 +6,9 @@ import {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export enum TagsAPI {
+export enum TagAPI {
   TEST = "TEST",
+  WAKE_UP = "WAKE_UP",
 }
 
 export enum AppEventT {
@@ -24,6 +25,10 @@ export type ResApiT<T> = {
     status?: number;
   } & T;
 };
+
+export type ReqApiT<T> = {
+  _?: number;
+} & T;
 
 export type UnwrappedResApiT<T extends void | Record<string, any>> =
   T extends void
