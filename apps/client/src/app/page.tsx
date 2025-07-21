@@ -1,60 +1,13 @@
-/** @jsxImportSource @emotion/react */
-"use client";
-
-import ShadowBtn from "@/common/components/buttons/ShadowBtn";
-import WrapCSR from "@/common/components/HOC/pageWrappers/WrapCSR";
-import { FlashSvg } from "@/common/components/SVGs";
-import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
-import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
-import { testSliceAPI } from "@/features/test/slices/api";
-import { __cg } from "@shared/first/lib/logger.js";
-import { isStr } from "@shared/first/lib/validators.js";
+import { genIps } from "@shared/first/lib/etc.js";
 import { type FC } from "react";
 
 const Home: FC = () => {
-  const res = testSliceAPI.useGetHelloQuery();
-
-  useWrapQuery({
-    ...res,
-    showToast: true,
-  });
-
-  const [mutate] = testSliceAPI.usePosHelloMutation();
-  const { wrapMutation } = useWrapMutation();
-
-  const handleClick = async () => {
-    const res = await wrapMutation({
-      cbAPI: () => mutate({ msg: "Client message" }),
-    });
-
-    __cg("home res", res);
-  };
-
   return (
-    <WrapCSR
-      {...{
-        isLoading: res.isLoading,
-        isApiOk: isStr(res.data?.msg),
-        throwErr: true,
-      }}
-    >
-      <div className="w-full h-full min-h-screen flex flex-col justify-center items-center gap-20">
-        <span className="text-3xl font-bold text-neutral-200">
-          Script worked ✌🏽
-        </span>
-
-        <div className="w-[250px]">
-          <ShadowBtn
-            {...{
-              handleClick,
-              label: "click me",
-              act: "OK",
-              Svg: FlashSvg,
-            }}
-          />
-        </div>
-      </div>
-    </WrapCSR>
+    <main className="w-full h-full flex flex-col">
+      <header className="w-[90%] sm:w-[75%] lg:w-[calc(100%-288px)] mx-auto">
+        <div className="w-full flex items-center justify-start gap-[12xp]"></div>
+      </header>
+    </main>
   );
 };
 

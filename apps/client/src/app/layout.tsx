@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fira_code.className} min-h-screen h-full w-full antialiased bg-neutral-950`}
+        className={`${fira_code.className} min-h-screen h-full w-full antialiased bg-[var(--white__sec)]`}
       >
         <Providers
           {...{
