@@ -37,11 +37,9 @@ export default function RootLayout({
             preloadedState: store.getState(),
           }}
         >
-          <WrapWakeUp>
-            <Toast />
+          <Toast />
 
-            {children}
-          </WrapWakeUp>
+          <WrapWakeUp>{children}</WrapWakeUp>
         </Providers>
       </body>
     </html>
