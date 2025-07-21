@@ -1,3 +1,1 @@
-export enum StorageKey {
-  WAKE_UP = "WAKE_UP",
-}
+export type StorageKey = "WAKE_UP";

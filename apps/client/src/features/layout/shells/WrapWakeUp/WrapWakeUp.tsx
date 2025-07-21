@@ -1,14 +1,16 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
-import { useEffect, useRef, useState, type FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getWakeState, wakeUpSlice } from "./slices/slice";
-import { __cg } from "@shared/first/lib/logger.js";
+import { useCallback, useEffect, useRef, useState, type FC } from "react";
 import WrapPop from "@/common/components/HOC/WrapPop/WrapPop";
-import { getStorage } from "@/core/lib/storage";
-import { StorageKey } from "@/common/types/storage";
 import { useWrapListener } from "@/core/hooks/etc/useWrapListener";
+import { wakeUpSliceAPI } from "./slices/api";
+import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
+import { clearTmr } from "@/core/lib/etc";
+import { isStr } from "@shared/first/lib/validators.js";
+import { getStorage, saveStorage } from "@/core/lib/storage";
+import { useHydration } from "@/core/hooks/ui/useHydration";
+import SpinBtn from "@/common/components/spinners/SpinBtn";
 
 type PropsType = {
   children: React.ReactNode;
@@ -16,38 +18,95 @@ type PropsType = {
 
 const WrapWakeUp: FC<PropsType> = ({ children }) => {
   const [isPop, setIsPop] = useState<boolean | null>(null);
+  const [canGo, setCanGo] = useState(false);
+
   const isAwakeRef = useRef<boolean>(false);
+  const timerID = useRef<NodeJS.Timeout | null>(null);
 
   const { wrapListener } = useWrapListener();
+  const { isHydrated } = useHydration();
 
-  const dispatch = useDispatch();
-  const wakeState = useSelector(getWakeState);
+  const [triggerRTK, res] = wakeUpSliceAPI.useLazyWakeServerQuery();
+  const { data } = res;
+  const { triggerRef } = useWrapQuery({
+    ...res,
+    showToast: true,
+  });
+  const triggerAPI = useCallback(() => {
+    triggerRef();
+    triggerRTK(
+      {
+        _: Date.now(),
+      },
+      false
+    );
+  }, [triggerRef, triggerRTK]);
 
   useEffect(() => {
-    const handler = () => {
-      const lastVal = getStorage(StorageKey.WAKE_UP);
+    const listener = () => {
+      const lastVal = getStorage("WAKE_UP");
 
       const delta = Date.now() - +(lastVal ?? 0);
       const min = delta / 1000 / 60;
 
-      if (min < 15) return;
+      setCanGo(true);
 
-      dispatch(wakeUpSlice.actions.setWakeState(false));
+      if (min < 15) {
+        isAwakeRef.current = true;
+        return;
+      }
+
       isAwakeRef.current = false;
       setIsPop(true);
     };
 
-    wrapListener(handler);
-  }, [wrapListener, dispatch]);
+    wrapListener(listener);
+  }, [wrapListener, isHydrated]);
+
+  useEffect(() => {
+    const listener = async () => {
+      if (!canGo) return;
+
+      while (!isAwakeRef.current) {
+        await new Promise<void>((res) => {
+          timerID.current = setTimeout(() => {
+            if (isStr(data?.msg)) {
+              saveStorage(Date.now(), { key: "WAKE_UP" });
+              isAwakeRef.current = true;
+              setIsPop(false);
+            } else {
+              triggerAPI();
+            }
+
+            clearTmr(timerID);
+            res();
+          }, 2000);
+        });
+      }
+    };
+
+    wrapListener(listener);
+
+    return () => {
+      clearTmr(timerID);
+    };
+  }, [triggerAPI, canGo, wrapListener, data, isHydrated]);
   return (
     <div className="w-full h-full">
       <WrapPop
         {...{
           isPop,
           setIsPop,
+          allowClose: false,
         }}
       >
-        <div className="w-full flex"></div>
+        <div className="w-full h-[75%] flex flex-col items-center justify-center gap-20">
+          <span className="font-bold text-xl sm:text-2xl lg:text-3xl text-neutral-200">
+            Server waking up ... 💤
+          </span>
+
+          <SpinBtn />
+        </div>
       </WrapPop>
 
       {children}

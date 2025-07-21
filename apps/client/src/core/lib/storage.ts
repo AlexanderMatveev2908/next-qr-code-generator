@@ -1,7 +1,7 @@
 import { StorageKey } from "@/common/types/storage";
 import { isWdw } from "./etc";
 
-export const saveStorage = <T>(key: StorageKey, data: T): void =>
+export const saveStorage = <T>(data: T, { key }: { key: StorageKey }): void =>
   sessionStorage.setItem(
     key,
     typeof data === "string" ? data : JSON.stringify(data)
