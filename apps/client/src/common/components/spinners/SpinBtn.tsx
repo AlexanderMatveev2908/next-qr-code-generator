@@ -14,7 +14,7 @@ type PropsType = {
   act?: AppEventT;
 };
 
-const SpinBtn: FC<PropsType> = ({ act = AppEventT.NONE }) => {
+const SpinBtn: FC<PropsType> = ({ act = "NONE" }) => {
   const ids = useMemo(() => Array.from({ length: 4 }, () => v4()), []);
 
   const $clr = $appClr[act as keyof typeof $appClr];

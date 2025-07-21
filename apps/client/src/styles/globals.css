@@ -99,6 +99,18 @@
   z-index: 10000;
 }
 
+.txt__md {
+  @apply font-semibold text-base sm:text-lg md:text-lg lg:text-xl;
+}
+
+.txt__lg {
+  @apply font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl;
+}
+
+.txt__xl {
+  @apply font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+}
+
 :root {
   --white__0: #f5f5f5;
   --gray__300: #d1d5dc;

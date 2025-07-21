@@ -1,4 +1,4 @@
-import { AppEventT, UnwrappedResApiT } from "@/common/types/api";
+import { UnwrappedResApiT } from "@/common/types/api";
 import { __cg } from "@shared/first/lib/logger.js";
 import { isStr } from "@shared/first/lib/validators.js";
 import { useCallback, useEffect, useRef } from "react";
@@ -49,7 +49,7 @@ export const useWrapQuery = <T extends Record<string, any> | void>({
         dispatch(
           toastSlice.actions.open({
             msg: isStr(data?.msg) ? data!.msg! : "Things went good ✅",
-            type: AppEventT.OK,
+            type: "OK",
           })
         );
       }

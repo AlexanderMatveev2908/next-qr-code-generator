@@ -11,13 +11,7 @@ export enum TagAPI {
   WAKE_UP = "WAKE_UP",
 }
 
-export enum AppEventT {
-  OK = "OK",
-  INFO = "INFO",
-  WARN = "WARN",
-  ERR = "ERR",
-  NONE = "NONE",
-}
+export type AppEventT = "OK" | "INFO" | "WARN" | "ERR" | "NONE";
 
 export type ResApiT<T> = {
   data: {

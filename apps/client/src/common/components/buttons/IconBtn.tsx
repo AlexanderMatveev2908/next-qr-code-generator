@@ -16,7 +16,7 @@ type PropsType = {
 
 const IconBtn: FC<PropsType> = ({
   handleClick,
-  act = AppEventT.NONE,
+  act = "NONE",
   Svg,
   isEnabled = true,
 }) => {
