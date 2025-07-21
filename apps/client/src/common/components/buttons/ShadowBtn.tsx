@@ -54,7 +54,7 @@ const ShadowBtn: FC<PropsType> = ({
           }
         `}
       >
-        {Svg && <Svg className="min-w-[35px] min-h-[35px]" />}
+        {Svg && <Svg className="svg__md" />}
 
         {label && (
           <span
