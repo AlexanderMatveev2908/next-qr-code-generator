@@ -10,7 +10,7 @@ const NotFound: FC = () => {
     <WrapEventPage
       {...{
         act: "INFO",
-        msg: "This is not the page your are looking for",
+        msg: "The treasure chest is empty. Someone got here before you... 💰",
         Svg: FaCircleQuestion,
       }}
     >

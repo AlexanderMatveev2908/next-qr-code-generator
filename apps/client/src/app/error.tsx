@@ -20,11 +20,7 @@ const Err: FC<PropsType> = ({ error: err }: PropsType) => {
     <WrapEventPage
       {...{
         act: "ERR",
-        msg:
-          err?.msg ??
-          err?.data?.msg ??
-          err?.message ??
-          "Ops something went wrong ❌",
+        msg: err?.msg ?? err?.data?.msg ?? err?.message ?? "Unmown error...❌",
         Svg: CircleAlert,
       }}
     >
