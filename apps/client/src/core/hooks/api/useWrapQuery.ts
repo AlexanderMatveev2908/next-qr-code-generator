@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useErrAPI } from "./useErrAPI";
 import { toastSlice } from "@/features/layout/components/Toast/slices";
-import { useWrapListener } from "../ui/useWrapListener";
+import { useWrapListener } from "../etc/useWrapListener";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Params<T extends Record<string, any> | void> = {
