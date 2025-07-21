@@ -6,7 +6,7 @@ const SpinPage: FC = () => {
   const ids = Array.from({ length: 15 }, () => v4());
 
   return (
-    <div className="w-full h-full min-h-screen overflow-hidden flex justify-center items-center -translate-y-[10%]">
+    <div className="w-full h-full min-h-screen overflow-hidden flex justify-center items-center">
       <div className={`${s.__wrap} relative w-full`}>
         {ids.map((id, i) => (
           <div

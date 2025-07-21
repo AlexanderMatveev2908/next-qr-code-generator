@@ -2,10 +2,12 @@
 "use client";
 
 import ShadowBtn from "@/common/components/buttons/ShadowBtn";
+import WrapCSR from "@/common/components/HOC/pageWrappers/WrapCSR";
 import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
 import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
 import { testSliceAPI } from "@/features/test/slices/api";
 import { __cg } from "@shared/first/lib/logger.js";
+import { isStr } from "@shared/first/lib/validators.js";
 import { type FC } from "react";
 
 const Home: FC = () => {
@@ -28,21 +30,29 @@ const Home: FC = () => {
   };
 
   return (
-    <div className="w-full h-full min-h-screen flex flex-col justify-center items-center gap-20">
-      <span className="text-3xl font-bold text-neutral-200">
-        Script worked ✌🏽
-      </span>
+    <WrapCSR
+      {...{
+        isLoading: res.isLoading,
+        isApiOk: isStr(res.data?.msg),
+        throwErr: true,
+      }}
+    >
+      <div className="w-full h-full min-h-screen flex flex-col justify-center items-center gap-20">
+        <span className="text-3xl font-bold text-neutral-200">
+          Script worked ✌🏽
+        </span>
 
-      <div className="w-[250px]">
-        <ShadowBtn
-          {...{
-            handleClick,
-            label: "click me",
-            act: "OK",
-          }}
-        />
+        <div className="w-[250px]">
+          <ShadowBtn
+            {...{
+              handleClick,
+              label: "click me",
+              act: "OK",
+            }}
+          />
+        </div>
       </div>
-    </div>
+    </WrapCSR>
   );
 };
 
