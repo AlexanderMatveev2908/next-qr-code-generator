@@ -3,6 +3,7 @@
 
 import ShadowBtn from "@/common/components/buttons/ShadowBtn";
 import WrapCSR from "@/common/components/HOC/pageWrappers/WrapCSR";
+import { FlashSvg } from "@/common/components/SVGs";
 import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
 import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
 import { testSliceAPI } from "@/features/test/slices/api";
@@ -48,6 +49,7 @@ const Home: FC = () => {
               handleClick,
               label: "click me",
               act: "OK",
+              Svg: FlashSvg,
             }}
           />
         </div>

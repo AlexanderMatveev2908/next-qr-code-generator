@@ -173,104 +173,140 @@
 
 .svg__xs {
   min-width: 25px;
+  width: 25px;
   min-height: 25px;
+  height: 25px;
 }
 
 @media screen and (min-width: 600px) {
   .svg__xs {
     min-width: 30px;
     min-height: 30px;
+    width: 30px;
+    height: 30px;
   }
 }
 @media screen and (min-width: 1000px) {
   .svg__xs {
     min-width: 35px;
     min-height: 35px;
+    width: 35px;
+    height: 35px;
   }
 }
 .svg__sm {
   min-width: 30px;
+  width: 30px;
   min-height: 30px;
+  height: 30px;
 }
 
 @media screen and (min-width: 600px) {
   .svg__sm {
     min-width: 35px;
     min-height: 35px;
+    width: 35px;
+    height: 35px;
   }
 }
 @media screen and (min-width: 1000px) {
   .svg__sm {
     min-width: 40px;
     min-height: 40px;
+    width: 40px;
+    height: 40px;
   }
 }
 .svg__md {
   min-width: 35px;
+  width: 35px;
   min-height: 35px;
+  height: 35px;
 }
 
 @media screen and (min-width: 600px) {
   .svg__md {
     min-width: 40px;
     min-height: 40px;
+    width: 40px;
+    height: 40px;
   }
 }
 @media screen and (min-width: 1000px) {
   .svg__md {
     min-width: 45px;
     min-height: 45px;
+    width: 45px;
+    height: 45px;
   }
 }
 .svg__lg {
   min-width: 40px;
+  width: 40px;
   min-height: 40px;
+  height: 40px;
 }
 
 @media screen and (min-width: 600px) {
   .svg__lg {
     min-width: 45px;
     min-height: 45px;
+    width: 45px;
+    height: 45px;
   }
 }
 @media screen and (min-width: 1000px) {
   .svg__lg {
     min-width: 50px;
     min-height: 50px;
+    width: 50px;
+    height: 50px;
   }
 }
 .svg__xl {
   min-width: 45px;
+  width: 45px;
   min-height: 45px;
+  height: 45px;
 }
 
 @media screen and (min-width: 600px) {
   .svg__xl {
     min-width: 50px;
     min-height: 50px;
+    width: 50px;
+    height: 50px;
   }
 }
 @media screen and (min-width: 1000px) {
   .svg__xl {
     min-width: 55px;
     min-height: 55px;
+    width: 55px;
+    height: 55px;
   }
 }
 .svg__2xl {
   min-width: 50px;
+  width: 50px;
   min-height: 50px;
+  height: 50px;
 }
 
 @media screen and (min-width: 600px) {
   .svg__2xl {
     min-width: 55px;
     min-height: 55px;
+    width: 55px;
+    height: 55px;
   }
 }
 @media screen and (min-width: 1000px) {
   .svg__2xl {
     min-width: 60px;
     min-height: 60px;
+    width: 60px;
+    height: 60px;
   }
 }
 :root {
