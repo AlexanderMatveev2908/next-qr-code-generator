@@ -2,7 +2,6 @@
 "use client";
 
 import { css, SerializedStyles } from "@emotion/react";
-import { __cg } from "@shared/first/lib/logger.js";
 import Link from "next/link";
 import { CSSProperties, useMemo, type FC } from "react";
 import { IconType } from "react-icons";
@@ -35,13 +34,11 @@ const WrapAppBtn: FC<PropsType> = ({
         ${$ctmCss};
       `,
       style: {
-        "--scale__up": 1.15,
+        "--scale__up": 1.2,
       } as CSSProperties,
     }),
     [wrapper, $ctmCss]
   );
-
-  __cg("obj", objProps);
 
   const content = (
     <>

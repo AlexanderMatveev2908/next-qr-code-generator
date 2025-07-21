@@ -9,7 +9,7 @@ import type { FC } from "react";
 
 const Hero: FC = () => {
   return (
-    <div className="w-full h-[600px] bg-[var(--white__sec)] flex justify-center items-center">
+    <div className="w-full h-[600px] bg-[var(--gray__sec_0)] flex justify-center items-center">
       <div className="w-[90%] sm:w-[80%] xl:w-[calc(100%-600px)] h-[calc(100%-280px)]">
         <div className="w-full flex justify-center">
           <AppLogo
