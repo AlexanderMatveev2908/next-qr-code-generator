@@ -13,3 +13,44 @@
 .txt__2xl {
   @apply font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
 }
+
+$fonts: (
+  h: (
+    xxs: 16,
+    xs: 20,
+    sm: 24,
+    md: 30,
+    lg: 36,
+    xl: 46,
+  ),
+  b: (
+    md: 16,
+    lg: 20,
+  ),
+);
+
+@each $type, $arg in $fonts {
+  @each $size, $val in $arg {
+    .txt__#{$type}_#{$size} {
+      font-size: #{$val}px;
+      letter-spacing: 0;
+
+      @if $type == h {
+        @if $val < 24 {
+          font-weight: 600;
+        } @else {
+          font-weight: 700;
+        }
+
+        @if $size == xl {
+          line-height: 100%;
+        } @else {
+          line-height: 125%;
+        }
+      } @else if $type == b {
+        font-weight: 400;
+        line-height: 125%;
+      }
+    }
+  }
+}
