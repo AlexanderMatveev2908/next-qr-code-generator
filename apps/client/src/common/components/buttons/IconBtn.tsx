@@ -37,7 +37,7 @@ const IconBtn: FC<PropsType> = ({
         } as React.CSSProperties
       }
     >
-      <Svg className="w-[40px] h-[40px]" />
+      <Svg className="svg__lg" />
     </button>
   );
 };

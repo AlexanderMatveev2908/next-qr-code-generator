@@ -1,3 +1,5 @@
+"use client";
+
 import type { FC } from "react";
 import { v4 } from "uuid";
 import s from "./SpinPage.module.css";
