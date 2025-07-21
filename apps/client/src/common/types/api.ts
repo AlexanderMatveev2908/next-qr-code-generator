@@ -26,14 +26,13 @@ export type ResApiT<T> = {
   } & T;
 };
 
-export type ReqApiT<T extends Record<string, any> | undefined> =
-  T extends undefined
-    ? {
-        _?: number;
-      } & T
-    : {
-        _?: number;
-      };
+export type ReqApiT<T extends Record<string, any> | void> = T extends void
+  ? {
+      _?: number;
+    }
+  : {
+      _?: number;
+    } & T;
 
 export type UnwrappedResApiT<T extends void | Record<string, any>> =
   T extends void
