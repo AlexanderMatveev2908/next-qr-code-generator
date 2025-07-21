@@ -115,6 +115,62 @@
   @apply font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
 }
 
+.txt__h_xxs {
+  font-size: 16px;
+  letter-spacing: 0;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.txt__h_xs {
+  font-size: 20px;
+  letter-spacing: 0;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.txt__h_sm {
+  font-size: 24px;
+  letter-spacing: 0;
+  font-weight: 700;
+  line-height: 125%;
+}
+
+.txt__h_md {
+  font-size: 30px;
+  letter-spacing: 0;
+  font-weight: 700;
+  line-height: 125%;
+}
+
+.txt__h_lg {
+  font-size: 36px;
+  letter-spacing: 0;
+  font-weight: 700;
+  line-height: 125%;
+}
+
+.txt__h_xl {
+  font-size: 46px;
+  letter-spacing: 0;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.txt__b_md {
+  font-size: 16px;
+  letter-spacing: 0;
+  font-weight: 400;
+  line-height: 125%;
+}
+
+.txt__b_lg {
+  font-size: 20px;
+  letter-spacing: 0;
+  font-weight: 400;
+  line-height: 125%;
+}
+
 .svg__xs {
   min-width: 25px;
   min-height: 25px;
