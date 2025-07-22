@@ -6,6 +6,7 @@ import Providers from "@/features/layout/shells/Providers";
 import Toast from "@/features/layout/components/Toast/Toast";
 import WrapWakeUp from "@/features/layout/shells/WrapWakeUp/WrapWakeUp";
 import Header from "@/features/layout/components/Header";
+import Footer from "@/features/layout/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,10 +39,13 @@ export default function RootLayout({
             preloadedState: store.getState(),
           }}
         >
-          <Header />
           <Toast />
 
+          <Header />
+
           <WrapWakeUp>{children}</WrapWakeUp>
+
+          <Footer />
         </Providers>
       </body>
     </html>
