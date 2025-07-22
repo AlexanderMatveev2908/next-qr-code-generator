@@ -1,4 +1,5 @@
 import z from "zod";
+import { enumRadioSchema } from "./common.js";
 
 export enum SizeQr {
   SM = "SM",
@@ -6,7 +7,11 @@ export enum SizeQr {
   LG = "LG",
 }
 
-const argSizes = Object.values(SizeQr);
+export enum FormatQr {
+  PNG = "PNG",
+  JPEG = "JPEG",
+  SVG = "SVG",
+}
 
 export const postQrForm = z.object({
   url: z
@@ -29,15 +34,12 @@ export const postQrForm = z.object({
       message: "are allowed only https urls",
     }),
 
-  size: z.preprocess(
-    (val) => (argSizes.includes(val as SizeQr) ? val : undefined),
-    z
-      .enum(argSizes)
-      .or(z.undefined())
-      .refine((v) => !!v, {
-        message: "Size is required",
-      })
-  ),
+  size: enumRadioSchema(SizeQr, {
+    label: "Size",
+  }),
+  format: enumRadioSchema(FormatQr, {
+    label: "Format",
+  }),
 });
 
 export type PostQrFormT = z.infer<typeof postQrForm>;
