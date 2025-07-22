@@ -3,9 +3,7 @@
 
 import type { FC } from "react";
 
-type PropsType = {};
-
-const QrForm: FC<PropsType> = ({}) => {
+const QrForm: FC = () => {
   return <div className="w-full h-full p-[32px] bg-[var(--white__sec)]"></div>;
 };
 
