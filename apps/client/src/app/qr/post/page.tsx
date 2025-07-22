@@ -19,6 +19,7 @@ const Page: FC = () => {
     resolver: zodResolver(postQrForm),
     mode: "onChange",
   });
+  const vls = formCtx.watch();
 
   const { urlCode } = useSelector(getQrState);
 
@@ -48,17 +49,24 @@ const Page: FC = () => {
     }
   );
 
-  return urlCode ? (
-    <QrRes />
-  ) : (
+  return (
     <div className="w-full min-h-screen h-full flex justify-center bg-[var(--gray__sec_0)]">
-      <div className="py-[73px] xl:px-[288px] h-full w-[90%] sm:w-[75%] xl:w-full flex flex-col items-center gap-[35px]">
-        <HeaderPost />
+      {urlCode ? (
+        <QrRes
+          {...{
+            urlCode,
+            input: vls,
+          }}
+        />
+      ) : (
+        <div className="py-[73px] xl:px-[288px] h-full w-[90%] sm:w-[75%] xl:w-full flex flex-col items-center gap-[35px]">
+          <HeaderPost />
 
-        <FormProvider {...formCtx}>
-          <QrForm {...{ handleSave, isLoading }} />
-        </FormProvider>
-      </div>
+          <FormProvider {...formCtx}>
+            <QrForm {...{ handleSave, isLoading }} />
+          </FormProvider>
+        </div>
+      )}
     </div>
   );
 };
