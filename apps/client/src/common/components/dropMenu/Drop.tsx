@@ -27,7 +27,7 @@ const Drop: FC<PropsType> = ({ label, children }) => {
     <div className="w-full relative h-[47px]">
       <div
         ref={dropRef}
-        className="absolute w-full items-center border-2 border-[var(--gray__sec_0)] rounded-[12px] bg-[var(--white__sec)] overflow-hidden grid grid-cols-1"
+        className="absolute w-full items-center border-2 border-[var(--gray__sec_0)] rounded-[12px] bg-[var(--white__sec)] overflow-hidden grid grid-cols-1 z-60"
         css={css`
           max-height: fit-content;
         `}

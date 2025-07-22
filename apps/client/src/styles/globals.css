@@ -171,6 +171,29 @@
   line-height: 125%;
 }
 
+.svg__xxs {
+  min-width: 20px;
+  width: 20px;
+  min-height: 20px;
+  height: 20px;
+}
+
+@media screen and (min-width: 600px) {
+  .svg__xxs {
+    min-width: 25px;
+    min-height: 25px;
+    width: 25px;
+    height: 25px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .svg__xxs {
+    min-width: 30px;
+    min-height: 30px;
+    width: 30px;
+    height: 30px;
+  }
+}
 .svg__xs {
   min-width: 25px;
   width: 25px;
