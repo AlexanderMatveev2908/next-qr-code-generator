@@ -9,7 +9,6 @@ export enum SizeQr {
 
 export enum FormatQr {
   PNG = "PNG",
-  JPEG = "JPEG",
   SVG = "SVG",
 }
 
