@@ -13,6 +13,13 @@ export enum FormatQr {
   SVG = "SVG",
 }
 
+export enum ColorQr {
+  "#000" = "#000",
+  "#6366F1" = "#6366F1",
+  "#16A34A" = "#16A34A",
+  "#DC2626" = "#DC2626",
+}
+
 export const postQrForm = z.object({
   url: z
     .string()
@@ -39,6 +46,9 @@ export const postQrForm = z.object({
   }),
   format: enumRadioSchema(FormatQr, {
     label: "Format",
+  }),
+  color: enumRadioSchema(ColorQr, {
+    label: "Color ",
   }),
 });
 

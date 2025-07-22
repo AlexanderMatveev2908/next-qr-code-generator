@@ -1,5 +1,6 @@
 import { CheckFieldT } from "@/common/types/uiFactory";
 import { FormFieldsGen } from "@/core/uiFactory/forms";
+import { ColorQr } from "@shared/first/schemas/qr.post";
 import { FormatQr } from "@shared/first/schemas/qr.post";
 import { SizeQr } from "@shared/first/schemas/qr.post";
 import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
@@ -27,12 +28,16 @@ export const optSize = [
   }),
 ];
 
-const buildOptFormat = (): CheckFieldT<PostQrFormT, Path<PostQrFormT>>[] => {
+const buildOpt = <T>(
+  enumObj: T
+): CheckFieldT<PostQrFormT, Path<PostQrFormT>>[] => {
   const res = [];
-  for (const k in FormatQr) {
+  for (const k in enumObj) {
     res.push(gen.genFieldCheck({ val: k }));
   }
   return res;
 };
 
-export const optFormat = buildOptFormat();
+export const optFormat = buildOpt(FormatQr);
+
+export const optColor = buildOpt(ColorQr);

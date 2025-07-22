@@ -3,7 +3,7 @@ import z from "zod";
 export const enumRadioSchema = <T extends Record<string, string>>(
   enumArg: T,
   { label }: { label: string }
-) => {
+): z.ZodType<T[keyof T], any, any> => {
   const arg = Object.values(enumArg);
 
   return z.preprocess(
