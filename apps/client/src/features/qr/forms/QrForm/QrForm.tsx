@@ -13,7 +13,12 @@ import ChoseClr from "@/common/components/forms/inputs/ChoseClr/ChoseClr";
 import WrapAppBtn from "@/common/components/HOC/buttonWrappers/WrapAppBtn";
 import { css } from "@emotion/react";
 
-const QrForm: FC = () => {
+type PropsType = {
+  handleSave: () => void;
+  isLoading: boolean;
+};
+
+const QrForm: FC<PropsType> = ({ handleSave, isLoading }) => {
   const {
     control,
     formState: { errors },
@@ -23,7 +28,10 @@ const QrForm: FC = () => {
   useFocus<PostQrFormT, Path<PostQrFormT>>("url", { setFocus });
 
   return (
-    <form className="w-full h-full py-[25px] px-[10px] sm:px-[20px] xl:p-[32px] bg-[var(--white__sec)] rounded-[16px] grid grid-cols-1 gap-[25px]">
+    <form
+      onSubmit={handleSave}
+      className="w-full h-full py-[25px] px-[10px] sm:px-[20px] xl:p-[32px] bg-[var(--white__sec)] rounded-[16px] grid grid-cols-1 gap-[25px]"
+    >
       <FormField
         {...{
           el: urlField,
@@ -68,6 +76,7 @@ const QrForm: FC = () => {
           wrapper: "html_button",
           type: "submit",
           scaleUp: 1,
+          isLoading,
           Svg: MagicSvg,
           $ctmCss: css`
             background: linear-gradient(
