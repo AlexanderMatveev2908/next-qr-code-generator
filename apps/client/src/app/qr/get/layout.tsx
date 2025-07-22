@@ -1,13 +1,12 @@
 import type { FC, ReactNode } from "react";
+import LayoutUi from "../post/layout";
 
 type PropsType = {
   children: ReactNode;
 };
 
-const LayoutUi: FC<PropsType> = ({ children }) => {
-  return (
-    <div className="w-full flex flex-col h-full min-h-screen">{children}</div>
-  );
+const layout: FC<PropsType> = ({ children }) => {
+  return <LayoutUi>{children}</LayoutUi>;
 };
 
-export default LayoutUi;
+export default layout;
