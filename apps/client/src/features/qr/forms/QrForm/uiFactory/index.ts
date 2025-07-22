@@ -1,4 +1,3 @@
-import { CheckFieldT } from "@/common/types/uiFactory";
 import { FormFieldsGen } from "@/core/uiFactory/forms";
 import { SizeQr } from "@shared/first/schemas/qr.post";
 import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
@@ -24,9 +23,4 @@ export const optSize = [
     val: SizeQr.LG,
     label: "Large (400 x 400)",
   }),
-].map(
-  (el): CheckFieldT<PostQrFormT, Path<PostQrFormT>> => ({
-    ...el,
-    type: "radio",
-  })
-);
+];

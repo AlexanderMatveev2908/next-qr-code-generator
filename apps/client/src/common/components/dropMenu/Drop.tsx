@@ -52,7 +52,7 @@ const Drop: FC<PropsType> = ({ label, children }) => {
         >
           {children({
             setIsOpen,
-            twd: "border-t-2 border-[var(--gray__sec_0)] w-full flex justify-start px-[13px] py-3",
+            twd: "border-t-2 border-[var(--gray__sec_0)] w-full flex justify-start px-[13px] py-3 cursor-pointer",
           })}
         </ul>
       </div>

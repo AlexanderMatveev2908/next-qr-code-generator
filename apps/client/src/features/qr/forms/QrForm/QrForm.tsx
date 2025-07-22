@@ -2,7 +2,7 @@
 "use client";
 
 import FormField from "@/common/components/forms/inputs/FormField";
-import RadioDrop from "@/common/components/forms/inputs/RadioDrop";
+import CheckDrop from "@/common/components/forms/inputs/CheckDrop";
 import { LinkSvg } from "@/common/components/SVGs";
 import { useFocus } from "@/core/hooks/etc/useFocus";
 import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
@@ -30,10 +30,11 @@ const QrForm: FC = () => {
         }}
       />
 
-      <RadioDrop
+      <CheckDrop
         {...{
           name: "size",
           label: "QR Code Size",
+          type: "radio",
           arg: optSize,
         }}
       />

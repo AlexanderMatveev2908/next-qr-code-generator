@@ -46,7 +46,6 @@ export class FormFieldsGen<T extends FieldValues, K extends Path<T>> {
       id: v4(),
       label: capt(opt.label ?? opt.val),
       val: opt.val,
-      type: opt.type ?? "checkbox",
     };
   }
 }
