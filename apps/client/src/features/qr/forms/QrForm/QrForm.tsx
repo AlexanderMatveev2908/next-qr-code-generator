@@ -3,13 +3,15 @@
 
 import FormField from "@/common/components/forms/inputs/FormField";
 import CheckDrop from "@/common/components/forms/inputs/CheckDrop";
-import { LinkSvg } from "@/common/components/SVGs";
+import { LinkSvg, MagicSvg } from "@/common/components/SVGs";
 import { useFocus } from "@/core/hooks/etc/useFocus";
 import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
 import { type FC } from "react";
 import { Path, useFormContext } from "react-hook-form";
 import { optColor, optFormat, optSize, urlField } from "./uiFactory";
 import ChoseClr from "@/common/components/forms/inputs/ChoseClr/ChoseClr";
+import WrapAppBtn from "@/common/components/HOC/buttonWrappers/WrapAppBtn";
+import { css } from "@emotion/react";
 
 const QrForm: FC = () => {
   const {
@@ -59,6 +61,23 @@ const QrForm: FC = () => {
           }}
         />
       </div>
+
+      <WrapAppBtn
+        {...{
+          label: "Generate QR Code",
+          wrapper: "html_button",
+          type: "submit",
+          scaleUp: 1,
+          Svg: MagicSvg,
+          $ctmCss: css`
+            background: linear-gradient(
+              90deg,
+              var(--blue__pmr) 100%,
+              var(--purple__pmr) 100%
+            );
+          `,
+        }}
+      />
     </form>
   );
 };
