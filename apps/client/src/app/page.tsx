@@ -6,7 +6,7 @@ import { type FC } from "react";
 
 const Home: FC = () => {
   return (
-    <main className="w-full h-full flex flex-col">
+    <main className="w-full min-h-screen h-full flex flex-col">
       <Hero />
 
       <HomeFooter />

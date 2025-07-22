@@ -17,7 +17,7 @@ const HomeFooter: FC = () => {
   });
 
   return (
-    <section className="w-full h-[492px] flex justify-center items-center">
+    <section className="w-full min-h-[492px] flex justify-center items-center">
       <div className="w-[90%] sm:w-[80%] xl:w-[calc(100%-288px)] h-[calc(100%-128px)] flex flex-col items-center gap-[55px]">
         <Txt
           {...{
