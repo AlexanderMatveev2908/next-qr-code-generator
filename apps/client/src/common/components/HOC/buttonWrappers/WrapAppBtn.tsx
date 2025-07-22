@@ -5,6 +5,7 @@ import { css, SerializedStyles } from "@emotion/react";
 import Link from "next/link";
 import { CSSProperties, useMemo, type FC } from "react";
 import { IconType } from "react-icons";
+import WrapApiBtn from "./WrapApiBtn";
 
 type PropsType = {
   wrapper: "html_button" | "next_link";
@@ -17,6 +18,7 @@ type PropsType = {
   Svg?: IconType;
   isEnabled?: boolean;
   scaleUp?: number;
+  isLoading?: boolean;
 };
 
 const WrapAppBtn: FC<PropsType> = ({
@@ -29,6 +31,7 @@ const WrapAppBtn: FC<PropsType> = ({
   handleClick,
   scaleUp = 1.2,
   Svg,
+  isLoading,
 }) => {
   const objProps = useMemo(
     () => ({
@@ -58,14 +61,21 @@ const WrapAppBtn: FC<PropsType> = ({
       {content}
     </Link>
   ) : (
-    <button
-      onClick={handleClick}
-      type={type}
-      disabled={!isEnabled}
-      {...objProps}
+    <WrapApiBtn
+      {...{
+        isLoading,
+        act: "INFO",
+      }}
     >
-      {content}
-    </button>
+      <button
+        onClick={handleClick}
+        type={type}
+        disabled={!isEnabled}
+        {...objProps}
+      >
+        {content}
+      </button>
+    </WrapApiBtn>
   );
 };
 
