@@ -1,4 +1,6 @@
+import { CheckFieldT } from "@/common/types/uiFactory";
 import { FormFieldsGen } from "@/core/uiFactory/forms";
+import { FormatQr } from "@shared/first/schemas/qr.post";
 import { SizeQr } from "@shared/first/schemas/qr.post";
 import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
 import { Path } from "react-hook-form";
@@ -24,3 +26,13 @@ export const optSize = [
     label: "Large (400 x 400)",
   }),
 ];
+
+const buildOptFormat = (): CheckFieldT<PostQrFormT, Path<PostQrFormT>>[] => {
+  const res = [];
+  for (const k in FormatQr) {
+    res.push(gen.genFieldCheck({ val: k }));
+  }
+  return res;
+};
+
+export const optFormat = buildOptFormat();

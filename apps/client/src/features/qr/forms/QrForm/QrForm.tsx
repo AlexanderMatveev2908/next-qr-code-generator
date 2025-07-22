@@ -8,7 +8,7 @@ import { useFocus } from "@/core/hooks/etc/useFocus";
 import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
 import { type FC } from "react";
 import { Path, useFormContext } from "react-hook-form";
-import { optSize, urlField } from "./uiFactory";
+import { optFormat, optSize, urlField } from "./uiFactory";
 
 const QrForm: FC = () => {
   const {
@@ -30,14 +30,25 @@ const QrForm: FC = () => {
         }}
       />
 
-      <CheckDrop
-        {...{
-          name: "size",
-          label: "QR Code Size",
-          type: "radio",
-          arg: optSize,
-        }}
-      />
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-[25px]">
+        <CheckDrop
+          {...{
+            name: "size",
+            label: "QR Code Size",
+            type: "radio",
+            arg: optSize,
+          }}
+        />
+
+        <CheckDrop
+          {...{
+            name: "format",
+            label: "Format",
+            type: "radio",
+            arg: optFormat,
+          }}
+        />
+      </div>
     </form>
   );
 };

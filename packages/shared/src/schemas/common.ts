@@ -5,7 +5,8 @@ export const enumRadioSchema = <T extends Record<string, string>>(
   { label }: { label: string }
 ) => {
   const arg = Object.values(enumArg);
-  z.preprocess(
+
+  return z.preprocess(
     (val) => (arg.includes(val as T[keyof T]) ? val : undefined),
     z
       .enum(arg)
