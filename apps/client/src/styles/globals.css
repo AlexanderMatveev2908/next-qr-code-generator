@@ -1,10 +1,10 @@
 @import "tailwindcss";
 .tb {
-  @apply border-[3px] border-[whitesmoke];
+  @apply border-[3px] border-neutral-950;
 }
 
 .tc {
-  @apply text-[whitesmoke] text-xl;
+  @apply text-neutral-950 text-xl;
 }
 
 .grad__txt {
@@ -56,15 +56,15 @@
   left: 50%;
   height: 2px;
   transition: 0.3s ease-in-out;
-  background-color: var(--white__0);
+  background-color: var(--clr);
 }
 .link:hover {
-  text-shadow: 0 0 2.5px var(--white__0), 0 0 5px var(--white__0);
+  text-shadow: 0 0 2.5px var(--clr), 0 0 5px var(--clr);
 }
 .link:hover::after {
   width: 100%;
   left: 0;
-  box-shadow: 0 0 5px var(--white__0), 0 0 10px var(--white__0);
+  box-shadow: 0 0 5px var(--clr), 0 0 10px var(--clr);
 }
 
 .btn__app:enabled,

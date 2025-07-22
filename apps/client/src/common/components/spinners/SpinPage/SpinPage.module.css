@@ -16,9 +16,10 @@
 .__dot {
   position: absolute;
   content: "";
-  background: var(--white__0);
-  box-shadow: 0 0 10px var(--white__0), 0 0 20px var(--white__0),
-    0 0 30px var(--white__0), 0 0 40px var(--white__0), 0 0 50px var(--white__0);
+  background: var(--neutral__950);
+  box-shadow: 0 0 10px var(--neutral__950), 0 0 20px var(--neutral__950),
+    0 0 30px var(--neutral__950), 0 0 40px var(--neutral__950),
+    0 0 50px var(--neutral__950);
   border-radius: 100%;
   width: 20px;
   height: 20px;

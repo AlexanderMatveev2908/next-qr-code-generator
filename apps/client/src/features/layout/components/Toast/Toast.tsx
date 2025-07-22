@@ -2,7 +2,6 @@
 "use client";
 
 import { getToastState } from "./slices";
-import { $appClr } from "@/core/uiFactory/style";
 import { AnimatePresence, motion } from "framer-motion";
 import { css } from "@emotion/react";
 import { resp } from "@/core/lib/style";
@@ -12,6 +11,7 @@ import { useToastStages } from "./hooks/useToastStages";
 import { useDispatch, useSelector } from "react-redux";
 import { FC } from "react";
 import IconBtn from "@/common/components/buttons/IconBtn";
+import { $argClr } from "@/core/uiFactory/style";
 
 const Toast: FC = () => {
   const toastState = useSelector(getToastState);
@@ -21,7 +21,7 @@ const Toast: FC = () => {
     dispatch,
     toastState,
   });
-  const clr = $appClr[toastState.toast.type ?? $appClr.NONE];
+  const clr = $argClr[toastState.toast.type ?? $argClr.NONE];
 
   return (
     <AnimatePresence>
