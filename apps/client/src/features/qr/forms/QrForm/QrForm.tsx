@@ -9,7 +9,7 @@ import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
 import { type FC } from "react";
 import { Path, useFormContext } from "react-hook-form";
 import { optColor, optFormat, optSize, urlField } from "./uiFactory";
-import ChoseClr from "@/common/components/forms/inputs/ChoseClr";
+import ChoseClr from "@/common/components/forms/inputs/ChoseClr/ChoseClr";
 
 const QrForm: FC = () => {
   const {

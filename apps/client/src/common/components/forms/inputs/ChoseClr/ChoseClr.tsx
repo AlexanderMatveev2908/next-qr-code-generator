@@ -3,8 +3,8 @@
 
 import { CheckT, CheckFieldT } from "@/common/types/uiFactory";
 import { FieldValues, Path, useFormContext } from "react-hook-form";
-import WrapField from "../HOC/WrapField";
-import { css } from "@emotion/react";
+import WrapField from "../../HOC/WrapField";
+import ItemChoice from "./components/ItemChoice";
 
 type PropsType<T extends FieldValues, K extends Path<T>> = {
   name: K;
@@ -17,13 +17,17 @@ const ChoseClr = <T extends FieldValues, K extends Path<T>>({
   arg,
   label,
   name,
-  type,
 }: PropsType<T, K>) => {
   const {
     watch,
     setValue,
     formState: { errors },
   } = useFormContext<T>();
+
+  const chosen = watch(name);
+
+  const handleClick = (v: T[K]) =>
+    setValue(name, (chosen === v ? "" : v) as T[K], { shouldValidate: true });
 
   return (
     <WrapField
@@ -34,28 +38,14 @@ const ChoseClr = <T extends FieldValues, K extends Path<T>>({
     >
       <div className="w-full flex justify-center gap-[12px]">
         {arg.map((el) => (
-          <button
-            type="button"
+          <ItemChoice
             key={el.id}
-            css={css`
-              transition: 0.3s;
-              transform: scale(1);
-              width: 50px;
-              height: 50px;
-              border-radius: 8px;
-
-              background: ${el.val};
-
-              &:hover {
-                transform: scale(1.2);
-              }
-
-              &:active {
-                transition: 0.1s;
-                transform: scale(0.8);
-              }
-            `}
-          ></button>
+            {...{
+              el,
+              isChosen: chosen === el.val,
+              handleClick,
+            }}
+          />
         ))}
       </div>
     </WrapField>
