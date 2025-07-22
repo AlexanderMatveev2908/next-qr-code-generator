@@ -16,7 +16,7 @@ export const logJSON = async (req: FastifyRequest) => {
       {
         body: req.body ?? {},
         params: req?.params ?? {},
-        query: req.query ?? {},
+        myQuery: req.myQuery ?? {},
       },
       null,
       2

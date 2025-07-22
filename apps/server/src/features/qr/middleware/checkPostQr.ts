@@ -4,9 +4,9 @@ import { checkZod } from "@src/lib/checkZod.js";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export const checkPostQr = async (req: FastifyRequest, res: FastifyReply) => {
-  const { body } = req;
+  const { myQuery } = req;
 
-  const { msg, all, isOk } = checkZod(postQrForm, { data: body });
+  const { msg, all, isOk } = checkZod(postQrForm, { data: myQuery });
 
   if (!isOk)
     return res.err400({

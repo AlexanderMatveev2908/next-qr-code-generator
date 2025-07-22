@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { __cg } from "@shared/first/lib/logger.js";
 import { qrSliceAPI } from "@/features/qr/slices/api";
 import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
+import { genUrlParams } from "@/core/lib/process";
 
 const Page: FC = () => {
   const formCtx = useForm<PostQrFormT>({
@@ -22,8 +23,10 @@ const Page: FC = () => {
 
   const handleSave = handleSubmit(
     async (data) => {
+      const params = genUrlParams(data);
+
       await wrapMutation({
-        cbAPI: () => mutate(data),
+        cbAPI: () => mutate(params),
       });
     },
     (errs) => {
