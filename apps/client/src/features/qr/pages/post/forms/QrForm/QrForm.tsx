@@ -20,7 +20,7 @@ const QrForm: FC = () => {
   const gen = new FormFieldsGen<PostQrFormT, Path<PostQrFormT>>();
 
   return (
-    <form className="w-full h-full p-[32px] bg-[var(--white__sec)] rounded-[16px]">
+    <form className="w-full h-full py-[25px] px-[10px] sm:px-[20px] xl:p-[32px] bg-[var(--white__sec)] rounded-[16px]">
       <FormField
         {...{
           el: gen.genFieldTxt("url", {
