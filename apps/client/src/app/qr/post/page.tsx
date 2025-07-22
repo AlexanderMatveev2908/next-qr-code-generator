@@ -7,6 +7,8 @@ import type { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { __cg } from "@shared/first/lib/logger.js";
+import { qrSliceAPI } from "@/features/qr/slices/api";
+import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
 
 const Page: FC = () => {
   const formCtx = useForm<PostQrFormT>({
@@ -15,10 +17,14 @@ const Page: FC = () => {
   });
 
   const { handleSubmit } = formCtx;
+  const [mutate, { isLoading }] = qrSliceAPI.usePostQrMutation();
+  const { wrapMutation } = useWrapMutation();
 
   const handleSave = handleSubmit(
-    (data) => {
-      __cg("data", data);
+    async (data) => {
+      await wrapMutation({
+        cbAPI: () => mutate(data),
+      });
     },
     (errs) => {
       __cg("errs", errs);
@@ -33,7 +39,7 @@ const Page: FC = () => {
         <HeaderPost />
 
         <FormProvider {...formCtx}>
-          <QrForm {...{ handleSave, isLoading: false }} />
+          <QrForm {...{ handleSave, isLoading }} />
         </FormProvider>
       </div>
     </div>
