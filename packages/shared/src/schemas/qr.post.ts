@@ -16,7 +16,10 @@ export const postQrForm = z.object({
       {
         message: "Invalid Url",
       }
-    ),
+    )
+    .refine((v) => v.startsWith("https://"), {
+      message: "are allowed only https urls",
+    }),
 });
 
 export type PostQrFormT = z.infer<typeof postQrForm>;

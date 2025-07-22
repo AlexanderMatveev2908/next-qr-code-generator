@@ -10,6 +10,7 @@ export class FormFieldsGen<T extends FieldValues, K extends Path<T>> {
       label?: string;
       type?: InputT;
       place?: string;
+      required?: boolean;
     }
   ): FormFieldT<T, K> {
     return {
@@ -17,7 +18,8 @@ export class FormFieldsGen<T extends FieldValues, K extends Path<T>> {
       name,
       label: capt(opt.label ?? name),
       type: opt.type ?? "text",
-      place: capt(opt.place ?? opt.label ?? name) + "...",
+      place: (opt.place ?? opt.label ?? name) + "...",
+      required: !!opt.required,
     };
   }
 }
