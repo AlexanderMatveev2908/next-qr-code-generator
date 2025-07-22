@@ -21,7 +21,7 @@ const Txt: FC<PropsType> = ({ txt, txtTwd, $ctmCss }) => {
         `}
       `}
     >
-      <span className={`${txtTwd ?? "txt__h_md"} `}>{txt}</span>
+      <span className={`${txtTwd ?? "txt__h_md"} text-center`}>{txt}</span>
     </div>
   );
 };
