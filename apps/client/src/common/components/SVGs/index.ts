@@ -1,4 +1,5 @@
 export { default as ArrowSvg } from "./ArrowSvg";
+export { default as ChevronSvg } from "./ChevronSvg";
 export { default as CurveArrowSvg } from "./CurveArrowSvg";
 export { default as DownloadSvg } from "./DownloadSvg";
 export { default as FlashSvg } from "./FlashSvg";

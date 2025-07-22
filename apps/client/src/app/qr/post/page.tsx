@@ -1,7 +1,7 @@
 "use client";
 
 import HeaderPost from "@/features/qr/pages/post/components/HeaderPost";
-import QrForm from "@/features/qr/pages/post/forms/QrForm/QrForm";
+import QrForm from "@/features/qr/forms/QrForm/QrForm";
 import { postQrForm, PostQrFormT } from "@shared/first/schemas/qr.post.js";
 import type { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";

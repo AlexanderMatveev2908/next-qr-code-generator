@@ -10,8 +10,7 @@ import {
   Path,
 } from "react-hook-form";
 import { IconType } from "react-icons";
-import Tooltip from "../../elements/Tooltip";
-import ErrField from "../etc/ErrField";
+import WrapField from "../HOC/WrapField";
 
 type PropsType<T extends FieldValues, K extends Path<T>> = {
   el: FormFieldT<T, K>;
@@ -29,46 +28,39 @@ const FormField = <T extends FieldValues, K extends Path<T>>({
   Svg,
 }: PropsType<T, K>) => {
   return (
-    <label htmlFor={el.name} className="w-full grid grid-cols-1 gap-[12px]">
-      <span className="justify-self-start txt__h_xxs text-[var(--gray__sec_3)]">
-        {el.label}
-      </span>
+    <WrapField
+      {...{
+        label: el.label,
+        msg: errors?.[el.name]?.message as string,
+      }}
+    >
+      <Controller
+        name={el.name}
+        control={control}
+        render={({ field }) => (
+          <input
+            {...field}
+            type={el.type}
+            required={el.required}
+            placeholder={el.place}
+            value={field.value ?? ""}
+            onChange={(e) => {
+              const {
+                target: { value },
+              } = e;
 
-      <div className="w-full h-fit relative">
-        <Controller
-          name={el.name}
-          control={control}
-          render={({ field }) => (
-            <input
-              {...field}
-              type={el.type}
-              required={el.required}
-              placeholder={el.place}
-              value={field.value ?? ""}
-              onChange={(e) => {
-                const {
-                  target: { value },
-                } = e;
-
-                field.onChange(value);
-                cb?.(value);
-              }}
-              className="appearance-none outline-none w-full h-[64px] border-2 border-[var(--gray__sec_1)] rounded-[12px] pl-[16px] pr-[40px]"
-            />
-          )}
-        />
-
-        {Svg && (
-          <Svg className="absolute top-1/2 -translate-y-1/2 right-[16px] w-[20px] h-[20px] text-[var(--gray__sec_2)]" />
+              field.onChange(value);
+              cb?.(value);
+            }}
+            className="appearance-none outline-none w-full h-[64px] border-2 border-[var(--gray__sec_1)] rounded-[12px] pl-[16px] pr-[40px]"
+          />
         )}
+      />
 
-        <ErrField
-          {...{
-            msg: errors?.[el.name]?.message as string,
-          }}
-        />
-      </div>
-    </label>
+      {Svg && (
+        <Svg className="absolute top-1/2 -translate-y-1/2 right-[16px] w-[20px] h-[20px] text-[var(--gray__sec_2)]" />
+      )}
+    </WrapField>
   );
 };
 

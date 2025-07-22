@@ -1,9 +1,22 @@
-import { FormFieldT, InputT } from "@/common/types/uiFactory";
+import {
+  CheckFieldT,
+  CheckT,
+  FormFieldT,
+  InputT,
+} from "@/common/types/uiFactory";
 import { capt } from "@shared/first/lib/formatters.js";
-import { FieldValues, Path } from "react-hook-form";
+import { FieldValues, Path, PathValue } from "react-hook-form";
 import { v4 } from "uuid";
 
 export class FormFieldsGen<T extends FieldValues, K extends Path<T>> {
+  private preFillGeneric(name: K, opt: { label?: string; required?: boolean }) {
+    return {
+      id: v4(),
+      label: capt(opt.label ?? name),
+      required: !!opt.required,
+    };
+  }
+
   public genFieldTxt(
     name: K,
     opt: {
@@ -14,12 +27,26 @@ export class FormFieldsGen<T extends FieldValues, K extends Path<T>> {
     }
   ): FormFieldT<T, K> {
     return {
-      id: v4(),
+      ...this.preFillGeneric(name, {
+        label: opt.label,
+        required: opt.required,
+      }),
       name,
-      label: capt(opt.label ?? name),
       type: opt.type ?? "text",
       place: (opt.place ?? opt.label ?? name) + "...",
-      required: !!opt.required,
+    };
+  }
+
+  public genFieldCheck(opt: {
+    val: PathValue<T, K>;
+    type?: CheckT;
+    label?: string;
+  }): CheckFieldT<T, K> {
+    return {
+      id: v4(),
+      label: capt(opt.label ?? opt.val),
+      val: opt.val,
+      type: opt.type ?? "checkbox",
     };
   }
 }
