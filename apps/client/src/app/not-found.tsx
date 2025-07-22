@@ -3,7 +3,7 @@
 import type { FC } from "react";
 import { FaCircleQuestion } from "react-icons/fa6";
 import WrapEventPage from "@/common/components/HOC/pageWrappers/WrapEventPage";
-import WrapShadow from "@/common/components/HOC/WrapShadow";
+import WrapShadow from "@/common/components/HOC/buttonWrappers/WrapShadow";
 
 const NotFound: FC = () => {
   return (

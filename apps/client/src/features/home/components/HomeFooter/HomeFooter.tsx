@@ -6,6 +6,8 @@ import { useGenIDs } from "@/core/hooks/etc/useGenIDs";
 import type { FC } from "react";
 import { infoArg } from "./uiFactory";
 import InfoItem from "./components/InfoItem";
+import { css } from "@emotion/react";
+import { resp } from "@/core/lib/style";
 
 const HomeFooter: FC = () => {
   const {
@@ -24,7 +26,15 @@ const HomeFooter: FC = () => {
           }}
         />
 
-        <div className="w-full grid grid-cols-3">
+        <div
+          className="grid w-full place-content-center gap-x-[40px] gap-y-[20px]"
+          css={css`
+            grid-template-columns: repeat(auto-fit, 308px);
+            ${resp("xl")} {
+              grid-template-columns: repeat(3, 308px);
+            }
+          `}
+        >
           {infoArg.map((el, i) => (
             <InfoItem key={ids[i]} {...{ info: el }} />
           ))}

@@ -7,7 +7,7 @@ import { CSSProperties, useMemo, type FC } from "react";
 import { IconType } from "react-icons";
 import { $argClr } from "@/core/uiFactory/style";
 import Link from "next/link";
-import WrapBtn from "./WrapBtn";
+import WrapApiBtn from "./WrapApiBtn";
 
 type PropsType = {
   wrapper: "next_link" | "html_button";
@@ -86,11 +86,11 @@ const WrapShadow: FC<PropsType> = ({
       {content}
     </Link>
   ) : (
-    <WrapBtn {...{ isLoading, act }}>
+    <WrapApiBtn {...{ isLoading, act }}>
       <button onClick={handleClick} disabled={!isEnabled} {...objProps}>
         {content}
       </button>
-    </WrapBtn>
+    </WrapApiBtn>
   );
 };
 

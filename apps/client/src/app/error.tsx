@@ -6,7 +6,7 @@ import type { FC } from "react";
 import { __cg } from "@shared/first/lib/logger.js";
 import { CircleAlert } from "lucide-react";
 import WrapEventPage from "@/common/components/HOC/pageWrappers/WrapEventPage";
-import WrapShadow from "@/common/components/HOC/WrapShadow";
+import WrapShadow from "@/common/components/HOC/buttonWrappers/WrapShadow";
 
 type PropsType = {
   error: any;

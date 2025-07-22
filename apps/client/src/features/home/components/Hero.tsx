@@ -3,7 +3,7 @@
 
 import AppLogo from "@/common/components/elements/AppLogo";
 import Txt from "@/common/components/elements/Txt";
-import WrapAppBtn from "@/common/components/HOC/WrapAppBtn";
+import WrapAppBtn from "@/common/components/HOC/buttonWrappers/WrapAppBtn";
 import { css } from "@emotion/react";
 import type { FC } from "react";
 
