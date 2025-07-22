@@ -1,5 +1,5 @@
+import LayoutUi from "@/common/components/HOC/pageWrappers/LayoutUi";
 import type { FC, ReactNode } from "react";
-import LayoutUi from "../post/layout";
 
 type PropsType = {
   children: ReactNode;
