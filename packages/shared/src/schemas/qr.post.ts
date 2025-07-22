@@ -1,5 +1,13 @@
 import z from "zod";
 
+export enum SizeQr {
+  SM = "SM",
+  MD = "MD",
+  LG = "LG",
+}
+
+const argSizes = Object.values(SizeQr);
+
 export const postQrForm = z.object({
   url: z
     .string()
@@ -20,6 +28,16 @@ export const postQrForm = z.object({
     .refine((v) => v.startsWith("https://"), {
       message: "are allowed only https urls",
     }),
+
+  size: z.preprocess(
+    (val) => (argSizes.includes(val as SizeQr) ? val : undefined),
+    z
+      .enum(argSizes)
+      .or(z.undefined())
+      .refine((v) => !!v, {
+        message: "Size is required",
+      })
+  ),
 });
 
 export type PostQrFormT = z.infer<typeof postQrForm>;
