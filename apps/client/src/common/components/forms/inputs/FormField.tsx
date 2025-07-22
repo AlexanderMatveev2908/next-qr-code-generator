@@ -10,6 +10,8 @@ import {
   Path,
 } from "react-hook-form";
 import { IconType } from "react-icons";
+import Tooltip from "../../elements/Tooltip";
+import ErrField from "../etc/ErrField";
 
 type PropsType<T extends FieldValues, K extends Path<T>> = {
   el: FormFieldT<T, K>;
@@ -51,7 +53,7 @@ const FormField = <T extends FieldValues, K extends Path<T>>({
                 field.onChange(value);
                 cb?.(value);
               }}
-              className="appearance-none outline-none w-full h-[64px] border-2 border-[var(--gray__sec_1)] rounded-[12px] pl-[16px] pr-[32px]"
+              className="appearance-none outline-none w-full h-[64px] border-2 border-[var(--gray__sec_1)] rounded-[12px] pl-[16px] pr-[40px]"
             />
           )}
         />
@@ -59,6 +61,12 @@ const FormField = <T extends FieldValues, K extends Path<T>>({
         {Svg && (
           <Svg className="absolute top-1/2 -translate-y-1/2 right-[16px] w-[20px] h-[20px] text-[var(--gray__sec_2)]" />
         )}
+
+        <ErrField
+          {...{
+            msg: errors?.[el.name]?.message as string,
+          }}
+        />
       </div>
     </label>
   );
