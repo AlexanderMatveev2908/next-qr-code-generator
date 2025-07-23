@@ -1,10 +1,14 @@
 import { formatDate } from "./formatters.js";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const __cg = (title: string, ...args: any[]) => {
-  console.group(title.toUpperCase());
+export const __cg = (title?: any, ...args: any[]) => {
+  const fallback = typeof title === "string" ? title : "logger ,🚀";
+  console.group(fallback.toUpperCase());
 
-  for (const el of args) {
+  const mergedArgs =
+    typeof title === "string" ? args : [title, ...(args ?? [])];
+
+  for (const el of mergedArgs) {
     console.log(el);
   }
 
