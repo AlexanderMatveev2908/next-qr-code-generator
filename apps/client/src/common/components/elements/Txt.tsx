@@ -8,13 +8,15 @@ type PropsType = {
   txt: string;
   txtTwd?: string;
   $ctmCss?: SerializedStyles;
+  justify?: string;
 };
 
-const Txt: FC<PropsType> = ({ txt, txtTwd, $ctmCss }) => {
+const Txt: FC<PropsType> = ({ txt, txtTwd, $ctmCss, justify }) => {
   return (
     <div
-      className="w-full flex justify-center"
+      className="w-full flex"
       css={css`
+        justify-content: ${justify ?? "center"};
         ${$ctmCss ??
         css`
           color: var(--black__sec);
