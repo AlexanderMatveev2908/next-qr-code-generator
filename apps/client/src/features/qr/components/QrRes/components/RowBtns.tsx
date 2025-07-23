@@ -34,7 +34,7 @@ const RowBtns: FC<PropsType> = ({
   const handleNavigator = async () => {
     const BASE_URL = envApp.CURR_URL;
 
-    const parsed = BASE_URL + `?${genUrlParams(input)}`;
+    const parsed = BASE_URL + `/qr/get?${genUrlParams(input)}`;
 
     try {
       await navigator.clipboard.writeText(parsed);
