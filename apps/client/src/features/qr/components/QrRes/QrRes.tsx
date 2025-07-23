@@ -6,6 +6,7 @@ import HeaderRes from "./components/HeaderRes";
 import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
 import { grabSize } from "./lib";
 import BodyRes from "./components/BodyRes";
+import FooterRes from "./components/FooterRes";
 
 type PropsType = {
   urlCode: string;
@@ -27,6 +28,8 @@ const QrRes: FC<PropsType> = ({ urlCode, input }) => {
             inputUrl: input.url,
           }}
         />
+
+        <FooterRes {...input} />
       </div>
     </div>
   );
