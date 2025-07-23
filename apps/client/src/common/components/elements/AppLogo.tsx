@@ -17,7 +17,7 @@ const AppLogo: FC<PropsType> = ({ $customCSS }) => {
       `}
       className="flex justify-center items-center rounded-[20%]"
     >
-      <InnerLogoSvg className="w-[37.5%] h-[45%] text-[var(--white__sec)]" />
+      <InnerLogoSvg className="w-[37.5%] h-[45%] text-white_sec" />
     </div>
   );
 };

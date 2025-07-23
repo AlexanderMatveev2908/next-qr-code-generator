@@ -24,13 +24,13 @@ const Header: FC = () => {
           }}
         />
 
-        <span className="txt__h_xs text-[var(--back__sec)]">QR GENERATOR</span>
+        <span className="txt__h_xs text-black_sec">QR GENERATOR</span>
       </Link>
 
       {path.startsWith("/qr") && (
         <Link
           href={path.includes("post") ? "/" : "/qr/post"}
-          className="flex items-center gap-[8px] text-[var(--gra__sec_3)]"
+          className="flex items-center gap-[8px] text-gray_sec-3"
         >
           <ArrowSvg className="w-[14px] h-[16px]" />
 

@@ -13,7 +13,7 @@ type PropsType = {
 const WrapField: FC<PropsType> = ({ children, label, msg }) => {
   return (
     <label className="w-full grid grid-cols-1 gap-[12px]">
-      <span className="justify-self-start txt__h_xxs text-[var(--gray__sec_3)]">
+      <span className="justify-self-start txt__h_xxs text-gray_sec-3">
         {label}
       </span>
       <div className="w-full h-fit relative">

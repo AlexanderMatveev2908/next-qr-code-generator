@@ -40,7 +40,7 @@ const FooterRes: FC<PropsType> = ({ url, color, format, size }) => {
       {arg.map((el, i) => (
         <div
           key={ids[i]}
-          className="w-full flex flex-col items-center justify-center gap-[4px] h-[90px] border-2 border-[var(--gray__sec_0)] rounded-[14px]"
+          className="w-full flex flex-col items-center justify-center gap-[4px] h-[90px] border-2 border-gray_sec-0 rounded-[14px]"
         >
           <div className="w-full flex justify-center items-center gap-1">
             {el.label.toLowerCase() === "color" && (
@@ -55,9 +55,7 @@ const FooterRes: FC<PropsType> = ({ url, color, format, size }) => {
             <span className="txt__h_sm">{el.val}</span>
           </div>
 
-          <span className="txt__b_md text-[var(--gray__sec_3)]">
-            {el.label}
-          </span>
+          <span className="txt__b_md text-gray_sec-3">{el.label}</span>
         </div>
       ))}
     </div>

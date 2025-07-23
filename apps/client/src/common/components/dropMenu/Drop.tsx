@@ -27,7 +27,7 @@ const Drop: FC<PropsType> = ({ label, children }) => {
     <div className="w-full relative h-[47px]">
       <div
         ref={dropRef}
-        className="absolute w-full items-center border-2 border-[var(--gray__sec_0)] rounded-[12px] bg-[var(--white__sec)] overflow-hidden grid grid-cols-1 z-60"
+        className="absolute w-full items-center border-2 border-gray_sec-0 rounded-[12px] bg-white_sec overflow-hidden grid grid-cols-1 z-60"
         css={css`
           max-height: fit-content;
         `}
@@ -38,7 +38,7 @@ const Drop: FC<PropsType> = ({ label, children }) => {
         >
           <span className="txt__b_md">{label}</span>
 
-          <ChevronSvg className="w-[30px] h-[30px] text-[var(--black__sec)]" />
+          <ChevronSvg className="w-[30px] h-[30px] text-black_sec" />
         </div>
 
         <ul
@@ -52,7 +52,7 @@ const Drop: FC<PropsType> = ({ label, children }) => {
         >
           {children({
             setIsOpen,
-            twd: "border-t-2 border-[var(--gray__sec_0)] w-full flex justify-start px-[13px] py-3 cursor-pointer",
+            twd: "border-t-2 border-gray_sec-0 w-full flex justify-start px-[13px] py-3 cursor-pointer",
           })}
         </ul>
       </div>

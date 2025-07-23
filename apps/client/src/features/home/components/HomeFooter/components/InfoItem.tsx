@@ -23,7 +23,7 @@ const InfoItem: FC<PropsType> = ({ info }) => {
           );
         `}
       >
-        <info.Svg className="text-[var(--white__sec)] w-[17.5px] h-[20px]" />
+        <info.Svg className="text-white_sec w-[17.5px] h-[20px]" />
       </div>
 
       <Txt
@@ -36,10 +36,7 @@ const InfoItem: FC<PropsType> = ({ info }) => {
       <Txt
         {...{
           txt: info.desc,
-          txtTwd: "txt__b_md",
-          $ctmCss: css`
-            color: var(--gray__sec_3);
-          `,
+          txtTwd: "txt__b_md text-gray_sec-3",
         }}
       />
     </div>

@@ -13,18 +13,18 @@ import { genUrlParams } from "@/core/lib/process";
 import { useDispatch, useSelector } from "react-redux";
 import { getQrState, qrSlice } from "@/features/qr/slices/slice";
 import QrRes from "@/features/qr/components/QrRes/QrRes";
+import { v4 } from "uuid";
 
 const Page: FC = () => {
   const formCtx = useForm<PostQrFormT>({
     resolver: zodResolver(postQrForm),
     mode: "onChange",
   });
-  const vls = formCtx.watch();
 
-  const { urlCode } = useSelector(getQrState);
+  const { urlCode, inputUser } = useSelector(getQrState);
 
   const { handleSubmit } = formCtx;
-  const [mutate, { isLoading }] = qrSliceAPI.usePostQrMutation();
+  const [mutate, { isLoading, data }] = qrSliceAPI.usePostQrMutation();
   const { wrapMutation } = useWrapMutation();
   const dispatch = useDispatch();
 
@@ -41,6 +41,7 @@ const Page: FC = () => {
       const { blob } = res;
       const url = URL.createObjectURL(blob);
       dispatch(qrSlice.actions.setQr(url));
+      dispatch(qrSlice.actions.setInput(data));
     },
     (errs) => {
       __cg("errs", errs);
@@ -50,12 +51,13 @@ const Page: FC = () => {
   );
 
   return (
-    <div className="w-full min-h-screen h-full flex justify-center bg-[var(--gray__sec_0)]">
+    <div className="w-full min-h-screen h-full flex justify-center bg-gray_sec-0">
       {urlCode ? (
         <QrRes
           {...{
             urlCode,
-            input: vls,
+            input: inputUser as PostQrFormT,
+            fileName: `${v4()}.${data?.blob.type}`,
           }}
         />
       ) : (

@@ -1,8 +1,15 @@
 import { StoreStateT } from "@/core/store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
 
-export const initState = {
+export type qrStateT = {
+  urlCode: string;
+  inputUser: PostQrFormT | null;
+};
+
+export const initState: qrStateT = {
   urlCode: "",
+  inputUser: null,
 };
 
 export const qrSlice = createSlice({
@@ -11,6 +18,9 @@ export const qrSlice = createSlice({
   reducers: {
     setQr: (state, action: PayloadAction<string>) => {
       state.urlCode = action.payload;
+    },
+    setInput: (state, action: PayloadAction<PostQrFormT>) => {
+      state.inputUser = action.payload;
     },
   },
 });
