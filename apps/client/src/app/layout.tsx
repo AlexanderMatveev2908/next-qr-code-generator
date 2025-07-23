@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Next PERN courses",
+  title: "Next qr-code generator",
   description: "Next PERN App for courses development",
   icons: {
     icon: "/favicon.svg",

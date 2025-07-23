@@ -39,6 +39,7 @@ const Page: FC = () => {
       if (!res) return;
 
       const { blob } = res;
+
       const url = URL.createObjectURL(blob);
       dispatch(qrSlice.actions.setQr(url));
       dispatch(qrSlice.actions.setInput(data));
