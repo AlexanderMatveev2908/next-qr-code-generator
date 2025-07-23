@@ -11,7 +11,7 @@ import { resp } from "@/core/lib/style";
 
 type PropsType = PostQrFormT;
 
-const FooterRes: FC<PropsType> = ({ url, color, format, size }) => {
+const FooterRes: FC<PropsType> = ({ color, format, size }) => {
   const arg = buildInfoResult({
     color,
     format,
