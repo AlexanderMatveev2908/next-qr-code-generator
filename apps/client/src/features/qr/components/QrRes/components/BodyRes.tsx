@@ -2,7 +2,6 @@
 "use client";
 
 import Txt from "@/common/components/elements/Txt";
-import ImgLoader from "@/common/components/HOC/assets/ImgLoader";
 import { css } from "@emotion/react";
 import type { FC } from "react";
 
@@ -12,7 +11,7 @@ type PropsType = {
   inputUrl: string;
 };
 
-const BodyRes: FC<PropsType> = ({ size, urlCode, inputUrl }) => {
+const BodyRes: FC<PropsType> = ({ size, inputUrl }) => {
   return (
     <>
       <div
@@ -24,11 +23,11 @@ const BodyRes: FC<PropsType> = ({ size, urlCode, inputUrl }) => {
           height: ${size}px;
         `}
       >
-        <ImgLoader
+        {/* <ImgLoader
           {...{
             src: urlCode,
           }}
-        />
+        /> */}
       </div>
 
       <div className="w-full flex flex-col gap-[8px] p-[16px] bg-gray_sec-0 text-gray_sec-3">
