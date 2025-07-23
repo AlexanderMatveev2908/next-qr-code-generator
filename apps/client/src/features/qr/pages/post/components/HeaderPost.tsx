@@ -33,10 +33,7 @@ const HeaderPost: FC = () => {
       <Txt
         {...{
           txt: "Transform any URL into a scannable QR code instantly. Perfect for sharing links, websites, and digital content.",
-          txtTwd: "txt__b_md",
-          $ctmCss: css`
-            color: var(--gray__sec_3);
-          `,
+          txtTwd: "txt__b_md text-gray_sec-3",
         }}
       />
     </div>

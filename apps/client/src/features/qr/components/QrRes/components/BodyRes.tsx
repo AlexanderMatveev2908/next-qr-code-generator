@@ -31,16 +31,13 @@ const BodyRes: FC<PropsType> = ({ size, urlCode, inputUrl }) => {
         />
       </div>
 
-      <div className="w-full flex flex-col gap-[8px] p-[16px] bg-[var(--gray__sec_0)]">
+      <div className="w-full flex flex-col gap-[8px] p-[16px] bg-gray_sec-0 text-gray_sec-3">
         <div className="w-full flex justify-between">
           <Txt
             {...{
               txt: "Content",
               txtTwd: "txt__b_md",
               justify: "start",
-              $ctmCss: css`
-                color: var(--gray__sec_3);
-              `,
             }}
           />
           <Txt
@@ -48,22 +45,16 @@ const BodyRes: FC<PropsType> = ({ size, urlCode, inputUrl }) => {
               txt: "URL",
               txtTwd: "txt__b_md",
               justify: "end",
-              $ctmCss: css`
-                color: var(--gray__sec_3);
-              `,
             }}
           />
         </div>
 
-        <div className="w-full flex items-center h-[44px] bg-[var(--white__sec)] rounded-[4px] justify-start pl-[9px] border-2 border-[var(--gray__sec_0)]">
+        <div className="w-full flex items-center h-[44px] bg-white_sec rounded-[4px] justify-start pl-[9px] border-2 border-gray_sec-0">
           <Txt
             {...{
               txt: inputUrl,
-              txtTwd: "txt__b_md",
+              txtTwd: "txt__b_md text-gray_sec-3",
               justify: "start",
-              $ctmCss: css`
-                color: var(--gra__sec_3);
-              `,
             }}
           />
         </div>

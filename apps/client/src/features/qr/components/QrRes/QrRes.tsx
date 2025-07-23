@@ -18,7 +18,7 @@ const QrRes: FC<PropsType> = ({ urlCode, input }) => {
 
   return (
     <div className="w-[90%] sm:w-[75%] xl:w-full xl:px-[288px] py-[32px] h-full grid grid-cols-1 gap-[20px]">
-      <div className="w-full h-fit bg-[var(--white__sec)] rounded-[12px] p-[15px] xl:p-[33px] grid grid-cols-1 gap-[25px]">
+      <div className="w-full h-fit bg-white_sec rounded-[12px] p-[15px] xl:p-[33px] grid grid-cols-1 gap-[25px]">
         <HeaderRes />
 
         <BodyRes

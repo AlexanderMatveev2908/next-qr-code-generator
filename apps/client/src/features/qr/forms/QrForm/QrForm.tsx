@@ -30,7 +30,7 @@ const QrForm: FC<PropsType> = ({ handleSave, isLoading }) => {
   return (
     <form
       onSubmit={handleSave}
-      className="w-full h-full py-[25px] px-[10px] sm:px-[20px] xl:p-[32px] bg-[var(--white__sec)] rounded-[16px] grid grid-cols-1 gap-[25px]"
+      className="w-full h-full py-[25px] px-[10px] sm:px-[20px] xl:p-[32px] bg-white_sec rounded-[16px] grid grid-cols-1 gap-[25px]"
     >
       <FormField
         {...{

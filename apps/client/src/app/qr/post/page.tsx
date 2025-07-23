@@ -50,7 +50,7 @@ const Page: FC = () => {
   );
 
   return (
-    <div className="w-full min-h-screen h-full flex justify-center bg-[var(--gray__sec_0)]">
+    <div className="w-full min-h-screen h-full flex justify-center bg-gray_sec-0">
       {urlCode ? (
         <QrRes
           {...{

@@ -52,13 +52,13 @@ const FormField = <T extends FieldValues, K extends Path<T>>({
               field.onChange(value);
               cb?.(value);
             }}
-            className="appearance-none outline-none w-full h-[64px] border-2 border-[var(--gray__sec_1)] rounded-[12px] pl-[16px] pr-[40px]"
+            className="appearance-none outline-none w-full h-[64px] border-2 border-gray_sec-1 rounded-[12px] pl-[16px] pr-[40px]"
           />
         )}
       />
 
       {Svg && (
-        <Svg className="absolute top-1/2 -translate-y-1/2 right-[16px] w-[20px] h-[20px] text-[var(--gray__sec_2)]" />
+        <Svg className="absolute top-1/2 -translate-y-1/2 right-[16px] w-[20px] h-[20px] text-gray_sec-2" />
       )}
     </WrapField>
   );

@@ -9,7 +9,7 @@ import type { FC } from "react";
 
 const Hero: FC = () => {
   return (
-    <section className="w-full min-h-[600px] bg-[var(--gray__sec_0)] flex justify-center items-center ">
+    <section className="w-full min-h-[600px] bg-gray_sec-0 flex justify-center items-center ">
       <div className="w-[90%] sm:w-[80%] xl:w-[calc(100%-600px)] h-[calc(100%-280px)] max-h-fit">
         <div className="w-full flex justify-center">
           <AppLogo
@@ -40,10 +40,7 @@ const Hero: FC = () => {
           <Txt
             {...{
               txt: "Transform any profile URL into a beautiful, scannable QR code. Perfect for social media, business cards, and networking.",
-              $ctmCss: css`
-                color: var(--gray__sec_3);
-              `,
-              txtTwd: "txt__b_lg",
+              txtTwd: "txt__b_lg text-gray_sec-3",
             }}
           />
         </div>

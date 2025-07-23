@@ -59,9 +59,7 @@ const CheckDrop = <T extends FieldValues, K extends Path<T>>({
                 key={el.id}
                 className={twd}
               >
-                <span className="txt__b_md text-[var(--black__sec)]">
-                  {el.label}
-                </span>
+                <span className="txt__b_md text-black_sec">{el.label}</span>
               </li>
             ))
         }
