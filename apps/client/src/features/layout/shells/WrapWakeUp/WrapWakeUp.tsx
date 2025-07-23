@@ -64,9 +64,9 @@ const WrapWakeUp: FC<PropsType> = ({ children }) => {
   }, [wrapListener, isHydrated]);
 
   useEffect(() => {
-    const listener = async () => {
-      if (!canGo) return;
+    if (!canGo) return;
 
+    const listener = async () => {
       while (!isAwakeRef.current) {
         await new Promise<void>((res) => {
           timerID.current = setTimeout(() => {
