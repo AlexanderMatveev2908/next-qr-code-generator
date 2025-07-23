@@ -6,7 +6,6 @@ import type { FC } from "react";
 import { css } from "@emotion/react";
 import { useGenIDs } from "@/core/hooks/etc/useGenIDs";
 import { buildInfoResult } from "../uiFactory";
-import { __cg } from "@shared/first/lib/logger.js";
 import { resp } from "@/core/lib/style";
 
 type PropsType = PostQrFormT;
@@ -17,8 +16,6 @@ const FooterRes: FC<PropsType> = ({ color, format, size }) => {
     format,
     size,
   });
-
-  __cg("arg", arg);
 
   const {
     ids: [ids],
