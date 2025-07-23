@@ -6,4 +6,7 @@ export const envApp = {
   BACK_URL: isDev
     ? process.env.NEXT_PUBLIC_BACK_URL_DEV
     : process.env.NEXT_PUBLIC_BACK_URL,
+  CURR_URL: isDev
+    ? process.env.NEXT_PUBLIC_FRONT_URL_DEV
+    : process.env.NEXT_PUBLIC_FRONT_URL,
 };

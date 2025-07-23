@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
-import type { FC } from "react";
+import { type FC } from "react";
 import HeaderRes from "./components/HeaderRes";
 import { PostQrFormT } from "@shared/first/schemas/qr.post.js";
 import { grabSize } from "./lib";
@@ -10,8 +10,7 @@ import FooterRes from "./components/FooterRes";
 import { buildActionsQr } from "./uiFactory/actions";
 import { useGenIDs } from "@/core/hooks/etc/useGenIDs";
 import CardAct from "./components/CardAct";
-import ContentActBtn from "./components/ContentActBtn";
-import { DownloadSvg } from "@/common/components/SVGs";
+import RowBtns from "./components/RowBtns";
 
 type PropsType = {
   urlCode: string;
@@ -47,21 +46,18 @@ const QrRes: FC<PropsType> = ({ urlCode, input, fileName }) => {
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[16px]">
         {buildActionsQr(input.format).map((el, i) => (
           <CardAct key={ids[i]} {...{ el }}>
-            {({ labelBtn, darkClr }) =>
-              !i ? (
-                <a href={urlCode} download={fileName}>
-                  <ContentActBtn
-                    {...{
-                      $bg: darkClr,
-                      label: labelBtn,
-                      Svg: DownloadSvg,
-                    }}
-                  />
-                </a>
-              ) : (
-                <div className=""></div>
-              )
-            }
+            {({ labelBtn, darkClr }) => (
+              <RowBtns
+                {...{
+                  darkClr,
+                  fileName,
+                  i,
+                  input,
+                  labelBtn,
+                  urlCode,
+                }}
+              />
+            )}
           </CardAct>
         ))}
       </div>
