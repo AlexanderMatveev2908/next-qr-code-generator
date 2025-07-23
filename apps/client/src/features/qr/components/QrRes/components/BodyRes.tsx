@@ -4,6 +4,7 @@
 import Txt from "@/common/components/elements/Txt";
 import { css } from "@emotion/react";
 import type { FC } from "react";
+import ImgLoader from "@/common/components/HOC/assetsHandlers/ImgLoader";
 
 type PropsType = {
   size: number;
@@ -11,7 +12,7 @@ type PropsType = {
   inputUrl: string;
 };
 
-const BodyRes: FC<PropsType> = ({ size, inputUrl }) => {
+const BodyRes: FC<PropsType> = ({ size, inputUrl, urlCode }) => {
   return (
     <>
       <div
@@ -23,11 +24,11 @@ const BodyRes: FC<PropsType> = ({ size, inputUrl }) => {
           height: ${size}px;
         `}
       >
-        {/* <ImgLoader
+        <ImgLoader
           {...{
             src: urlCode,
           }}
-        /> */}
+        />
       </div>
 
       <div className="w-full flex flex-col gap-[8px] p-[16px] bg-gray_sec-0 text-gray_sec-3">
