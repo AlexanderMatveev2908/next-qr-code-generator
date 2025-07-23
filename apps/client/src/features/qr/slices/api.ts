@@ -1,3 +1,4 @@
+import { UnwrappedResApiT } from "@/common/types/api";
 import { apiSlice } from "@/core/store/api";
 import { UnwrapPromise } from "next/dist/lib/coalesced-function";
 
@@ -9,6 +10,14 @@ export const qrSliceAPI = apiSlice.injectEndpoints({
       query: (data) => ({
         url: BASE_URL + `?${data}`,
         method: "POST",
+        responseType: "blob",
+      }),
+    }),
+
+    getQr: builder.query<UnwrappedResApiT<{ blob: Blob }>, string>({
+      query: (data) => ({
+        url: BASE_URL + `?${data}`,
+        method: "GET",
         responseType: "blob",
       }),
     }),
