@@ -22,6 +22,7 @@ export const qrSlice = createSlice({
     setInput: (state, action: PayloadAction<PostQrFormT>) => {
       state.inputUser = action.payload;
     },
+    clear: () => initState,
   },
 });
 
